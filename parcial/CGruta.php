@@ -1,30 +1,24 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario ruta.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar ruta.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGruta.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>RUTAS</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
+	
+</body>
+</html>
+<body>
+	<div class="opciones">
+		<a href="formulario ruta.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscar ruta.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGruta.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Rutas</h1>
 
 <?php
 
@@ -36,39 +30,50 @@ $resultado = $con->query($sql);
 $filas = mysqli_num_rows($resultado);
 
 if($filas === 0){
-	echo"<center>No existen datos</center>";
-} else {
-	
-echo "<center><table border=1></center>";
-echo"<tr>";
-   echo"<td bgcolor='#E38DED'>Numero de Ruta</td>";
-      echo"<td bgcolor='#E38DED'>Origen</td>";
-	     echo"<td bgcolor='#E38DED'>Destino</td>";
-			  echo"<td bgcolor='#E38DED'>Estado</td>";
-				  echo"<td bgcolor='#E38DED'>Eliminar</td>";
-				  echo"<td bgcolor='#E38DED'>Editar</td>";
-echo"</tr>";
-
- while ($fila = $resultado->fetch_assoc()){
-		echo"<tr>";
-		$n_ruta=$fila["n_ruta"];
-	  	$origen=$fila["origen"];;
-		$destino=$fila["destino"];;
-		$estado=$fila["estado"];;
-	 
-			echo"<td>$n_ruta</td>";
-			echo"<td>$origen</td>";
-			echo"<td>$destino</td>";
-			echo"<td>$estado</td>";
-			echo"<td><a href='eliminaruta.php?n_ruta=$n_ruta'><center><img src='imagenes/eliminar.png' width=35></center></a></td>";
+	?>
+		<h3 class="No-resultado">No existen datos</h3>";
+	<?php
+	} else {	
+	?>
+		<table class="tabla-resultados">
+			<thead>
+				<tr>	
+					<td>N° Ruta</td>
+					<td>Origen</td>
+					<td>Destino</td>
+					<td>Eliminar</td> 
+					<td>Editar</td> 
+				</tr>				  
+			</thead>
+			<tbody>
 			
-			echo"<td><a href='editar ruta.php?n_ruta=$n_ruta'><center><img src='imagenes/editar.png' width=25></center></a></td>";
-	    echo"</tr>";
-}
-echo "</table>";
-}
+			<?php  
+			while ($fila = $resultado->fetch_assoc()){ 
+		
+				$n_ruta=$fila["n_ruta"];
+				$origen=$fila["origen"];
+				$destino=$fila["destino"];
+			?>
+				<tr>
+					<td><?php echo $n_ruta ?></td>
+					<td><?php echo $origen ?></td>
+					<td><?php echo $destino ?></td>
+					<td>
+						<a href='eliminaruta.php?n_ruta=$n_ruta'>
+							<img src='imagenes/eliminar.png' width=35>
+						</a>
+					</td>			
+					<td>
+						<a href='editar ruta.php?n_ruta=$n_ruta'>
+							<img src='imagenes/editar.png' width=25>
+						</a>
+					</td>
+	    		</tr>
+	<?php } ?>
+		</tbody>
+	</table>
+<?php }?>
 
-?>
 
 </body>
 

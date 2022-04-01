@@ -1,32 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario boleto.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscarboleto.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGboleto.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>REGISTROS</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-<body>
-
+	<div class="opciones">
+		<a href="formulario boleto.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscarboleto.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGboleto.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Boletos</h1>
 <?php
 
 //conectar a la bd
@@ -37,50 +25,56 @@ $resultado = $con->query($sql);
 $filas = mysqli_num_rows($resultado);
 
 
-if($filas==0){
-	echo"<center>No existen datos</center>";
-} else {
-?>
-	<table>
-	<thead>
-		<tr>
-			<th>Numero de boleto</th>
-			<th>Fecha</th>
-			<th>Valor</th>
-			<th>Número de asiento</th>
-			<th>Estado</th>
-			<th>Eliminar</th>
-			<th>Editar</th>
-		</tr>
-	</thead>
-<?php
- 	while ($fila = $resultado->fetch_assoc()){
-       	echo"<tr>";
-	   	$num_boleto=$fila["num_boleto"];  
-	   	$fecha=$fila["fecha"];
-		$valor=$fila["valor"];
-		$n_asiento=$fila["n_asiento"];
-		$estado=$fila["estado"];
-	 
-	    echo"<td>$num_boleto</td>";
-		echo"<td>$fecha</td>";
-		echo"<td>$valor</td>";
-		echo"<td>$n_asiento</td>";
-			echo"<td>$estado</td>";
-		echo"<td><a href='eliminarboleto.php?num_boleto=$num_boleto'><center><img src='imagenes/eliminar.png' width=35></center></a></td>";
-		
-		echo"<td><a href='editarboleto.php?num_boleto=$num_boleto'><center><img src='imagenes/editar.png' width=25></center></a></td>";
-	    echo"</tr>";
-}
-echo "</table>";
-}
-
-
-
-
-?>
-
-
+if($filas === 0){
+	?>
+		<h3 class="No-resultado">No existen datos</h3>";
+	<?php
+	} else {	
+	?>
+		<table class="tabla-resultados">
+			<thead>
+				<tr>	
+					<td>N° boleto</td>
+					<td>Fecha</td>
+					<td>Valor</td>
+					<td>N° Asiento</td>
+					<td>Estado</td> 
+					<td>Eliminar</td> 
+					<td>Editar</td> 
+				</tr>				  
+			</thead>
+			<tbody>
+			
+			<?php  
+			while ($fila = $resultado->fetch_assoc()){ 
+       
+				$num_boleto=$fila["num_boleto"];  
+				$fecha=$fila["fecha"];
+				$valor=$fila["valor"];
+				$n_asiento=$fila["n_asiento"];
+				$estado=$fila["estado"];
+			?>
+			<tr>
+				<td><?php echo $num_boleto ?></td>
+				<td><?php echo $fecha ?></td>
+				<td><?php echo $valor ?></td>
+				<td><?php echo $n_asiento ?></td>
+				<td><?php echo $estado ?></td>	   
+				<td>
+					<a href='eliminarboleto.php?num_boleto=$num_boleto'>
+						<img src='imagenes/eliminar.png' width=35>
+					</a>
+				</td>
+				<td>
+					<a href='editarboleto.php?num_boleto=$num_boleto'>
+						<img src='imagenes/editar.png' width=25>
+					</a>
+				</td>
+	   		</tr>
+	<?php } ?>
+		</tbody>
+	</table>
+<?php }?>
 
 </body>
 

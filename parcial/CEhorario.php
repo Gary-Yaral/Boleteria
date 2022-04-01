@@ -29,11 +29,12 @@
 
 <?php
 
-$horallegada = $_REQUEST["hora_llegada"];
+$horasalida = $_REQUEST["hora_salida"];
+
 //conectar a la bd
 $con = mysqli_connect("localhost","root","","boletos"); 
 $table = "horario"; 
-$sql = "select * from $table where hora_llegada='$horallegada'";
+$sql = "select * from $table where hora_salida='$horasalida'";
 $resultado = $con->query($sql);
 $filas = mysqli_num_rows($resultado);
 
@@ -55,11 +56,10 @@ echo"</tr>";
 		$estado=$fila["estado"];
 
 	   echo"<td>$horallegada</td>";
-	   echo"<td>$horasalidao</td>";
+	   echo"<td>$horasalida</td>";
 	   echo"<td>$estado</td>";
 	   
 	          echo"</tr>";
-$i++;
 }
 echo "</table>";
 }

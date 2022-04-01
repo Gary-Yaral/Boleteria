@@ -1,53 +1,27 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario cliente.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar cliente.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGcliente.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Ingrese cliente</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-
-
-<?php
-echo"<form action='CEcliente.php' method='post'> ";
-echo"<center>
-<table border=1 width=500></center>
-<tr><td>
-Ingrese cliente: </td><td><input type='text' name=cedula></td></tr>
-<td colspan = 2>
-
-<center>
-<input type='reset' value=Limpiar>
-<input type='submit' ></center></td>
-</table>
-
-";
-
-
-echo"</form>";
-?>
-
-
-
+	<div class="opciones">
+        <a href="formulario cliente.php"><input type="button" value= "INGRESAR"></a>
+        <a href="buscar cliente.php"><input type="button" value= "BUSCAR"></a>
+        <a href="CGcliente.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Buscar Cliente</h1>
+    <form class="form-buscar" action='CEcliente.php' method='post'> 
+        <label for="cedula">Ingrese cédula:</label>
+        <input type='text' name=cedula id="cedula">
+        <div>
+            <input type='submit' >
+            <input type='reset' value=Limpiar>
+        </div>
+    </form>
 </body>
-
 </html>

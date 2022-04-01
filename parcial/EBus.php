@@ -22,47 +22,33 @@
 
 
 <?php 
+$id_bus=$_REQUEST["id_bus"];
+$chofer=$_REQUEST["chofer"];
 $placa=$_REQUEST["placa"];
-// por primera vez presionado=0 
-@$Presionado=$_REQUEST["Presionado"];
-?>
-
-<form class="form-buscar" name='formulario' method='post' action='eliminarbus.php?Presionado=si&placa=<?php echo $placa ?>'>
-
-<?php
-//conectar a la bd
+$matricula=$_REQUEST["matricula"];
+$capacidad=$_REQUEST["capacidad"];
+$modelo=$_REQUEST["modelo"];
+$estado=$_REQUEST["estado"];
+echo $placa;
 $con = mysqli_connect("localhost","root","","boletos"); 
 $table = "bus"; 
 
-if (strlen(@$Presionado)==0){
-?>
-  <aside class="titulo-modal">
-    <strong>¿Desea eliminar este bus?</strong>
-</aside>
-  <div>
-    <a href=CGbus.php Title=Cancelar>Cancelar</a>
-    <input type=submit value='Eliminar' name=Submit alt='Eliminar'>
-  </div>
-<?php
-
-}
-
-if (strlen(@$Presionado)==2){
-  $sql = "DELETE FROM $table where placa='$placa'";
-  $resultado = $con->query($sql);
-  if($resultado == 1) {
-?>  <h3 class="titulo-eliminar">Resultado</h3>
-    <section class="mensaje-eliminar">Bus eliminado</section>
+$sql = "UPDATE $table SET chofer ='$chofer', placa ='$placa', matricula = '$matricula', capacidad='$capacidad', modelo ='$modelo', estado='$estado' WHERE id_bus='$id_bus'";
+$resultado = $con->query($sql);
+echo $resultado;
+if($resultado == 1) {
+?>  
+    <h3 class="titulo-eliminar">Resultado</h3>
+    <section class="mensaje-eliminar">Bus editado</section>
     <meta http-equiv='refresh' content='1;URL=CGbus.php?'/>
 <?php
 } else {
 ?>
-    <div>No se ha podido eliminar bus</div>
+    <div>No se ha podido editar bus</div>
 <?php
-  } 
 }
-?> 
+?>
 
-</form>
+
 </body>
 </html>

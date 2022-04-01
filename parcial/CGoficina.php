@@ -1,28 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>REGISTROS</h1></center>
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
+	<div class="opciones">
+		<a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Oficinas</h1>
 
 <?php
 
@@ -34,42 +26,53 @@ $resultado = $con->query($sql);
 $filas = mysqli_num_rows($resultado);
 
 
-if($filas==0)
-	{
-	echo"No existen datos";
-	}
-	else
-	{
-	echo "<center><table border=1></center>";
-	echo"<tr>";
-	echo"<td bgcolor='#E38DED'>Nombre</td>";
-		echo"<td bgcolor='#E38DED'>Direccion</td>";
-			echo"<td bgcolor='#E38DED'>Telefono</td>";
-				echo"<td bgcolor='#E38DED'>Correo</td>";
-					echo"<td bgcolor='#E38DED'>Eliminar</td>";
-					echo"<td bgcolor='#E38DED'>Editar</td>";
-	echo"</tr>";
-
- 	while ($fila = $resultado->fetch_assoc()){
-		echo"<tr>";
-		$nombre=$fila["nombre"];
-		$direccion=$fila["direccion"];
-		$telefono=$fila["telefono"];
-		$correo=$fila["correo"];
-		$id_oficina = $fila["id_oficina"];
-		
-		echo"<td>$nombre</td>";
-		echo"<td>$direccion</td>";
-		echo"<td>$telefono</td>";
-		echo"<td>$correo</td>";
-		echo"<td><a href='eliminaroficina.php?nombre=$nombre'><center><img src='imagenes/eliminar.png' width=35></center></a></td>";	
-		echo"<td><a href='editar oficina.php?nombre=$nombre'><center><img src='imagenes/editar.png' width=25></center></a></td>";
-		echo"</tr>";
-	}
-        echo "</table>";
-}
-
-?>
+if($filas === 0){
+	?>
+		<h3 class="No-resultado">No existen datos</h3>
+	<?php
+	} else {	
+	?>
+		<table class="tabla-resultados">
+			<thead>
+				<tr>	
+					<td>Nombre</td>
+					<td>Direción</td>
+					<td>Teléfono</td>
+					<td>Correo</td>
+					<td>Eliminar</td> 
+					<td>Editar</td> 
+				</tr>				  
+			</thead>
+			<tbody>
+			
+			<?php  
+			while ($fila = $resultado->fetch_assoc()){ 
+				$nombre=$fila["nombre"];
+				$direccion=$fila["direccion"];
+				$telefono=$fila["telefono"];
+				$correo=$fila["correo"];
+				
+			?>
+			<tr>
+				<td><?php echo $nombre ?></td>
+				<td><?php echo $direccion ?></td>
+				<td><?php echo $telefono ?></td>
+				<td><?php echo $correo ?></td>
+				<td>
+					<a href='eliminaroficina.php?nombre=$nombre'>
+						<img src='imagenes/eliminar.png' width=35>
+					</a>
+				</td>	
+				<td>
+					<a href='editar oficina.php?nombre=$nombre'>
+						<img src='imagenes/editar.png' width=25>
+					</a>
+				</td>
+			</tr>
+	<?php } ?>
+		</tbody>
+	</table>
+<?php }?>
 
 </body>
 

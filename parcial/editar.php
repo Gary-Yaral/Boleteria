@@ -1,80 +1,77 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
+	
+</body>
+</html>
+<body>
+	<div class="opciones">
+		<a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscar.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Editar Bus</h1>
+
 <?php 
-$placa=$_REQUEST["placa"];
+$id_bus=$_REQUEST["id_bus"];
 // por primera vez presionado=0 
-echo "<form name=formulario method=post action=editar.php?Presionado=si&placa=$placa>";
 
 //conectar a la bd
-  $link = mysql_connect("localhost","root",""); 
-  mysql_select_db("boletos", $link);
-  
-$resultado=mysql_query("select * from bus where placa='$placa'",$link);
-$row=mysql_num_rows($resultado);
 
+$con = mysqli_connect("localhost","root","","boletos"); 
+$table = "bus"; 
+$sql = "select * from $table where id_bus='$id_bus'";
+$resultado = $con->query($sql);
+$filas =$resultado->fetch_assoc();
 
-	 
-	  $chofer=mysql_result($resultado,0,"chofer");
-	   	   $placa=mysql_result($resultado,0,"placa");
-	   	   $matricula=mysql_result($resultado,0,"matricula");
-			   	   $cap=mysql_result($resultado,0,"capacidad");
-				   $mod=mysql_result($resultado,0,"modelo");
-				   $est=mysql_result($resultado,0,"estado");
-				    
-
-
-echo"<form action='CGbus.php' method='post'>
-<table border=1 width=500>
-<tr><td>
-Chofer: </td><td><input type='text' name=cedula value='$chofer'></td></tr>
-<tr><td>
-Placa: </td><td><input type='text' name=nombre value='$placa'></td></tr>
-<tr><td>
-Matricula: </td><td><input type='text' name=nombre value='$matricula'></td></tr>
-<tr><td>
-capacidad: </td><td><input type='text' name=nombre value='$cap'></td></tr>
-<tr><td>
-modelo: </td><td><input type='text' name=nombre value='$mod'></td></tr>
-</td></tr>
-<tr><td>
-Estado: </td><td><input type='text' name=nombre value='$est'></td></tr>
-
-<tr>
-<td colspan=2><center>
-<input type='reset' value=Limpiar>
-
-<input type='submit'><center></td></tr>";
-
-
-
-
-
-
-//etiqueta de html que sirve para redireccionar automáticamente en los segundos que ud quiera
-
-
-
-
-
-echo "</table>";
-echo "</form>";
+$id_bus=$filas["id_bus"];
+$chofer=$filas["chofer"];
+$placa=$filas["placa"];
+$matricula=$filas["matricula"];
+$capacidad=$filas["capacidad"];
+$modelo=$filas["modelo"];
+$estado=$filas["estado"];
 ?>
-</form>
-</div>
+	<form class="form-editar" action='MBus.php' method='post'>
+
+		<input type='hidden' name="id_bus" value='<?php echo $id_bus ?>'>
+		<div>
+			<label for="cedula">Chofer:</label>
+			<input type='text' name="chofer" value='<?php echo $chofer ?>'>
+		</div>
+		<div>
+			<label for="cedula">Placa:</label>
+			<input type='text' name="placa" value='<?php echo $placa ?>'>
+		</div>
+		<div>
+			<label for="cedula">Matrìcula:</label>
+			<input type='text' name="matricula" value='<?php echo $matricula ?>'>
+		</div>
+		<div>
+			<label for="cedula">Capacidad:</label>
+			<input type='text' name="capacidad" value='<?php echo $capacidad ?>'>
+		</div>
+		<div>
+			<label for="cedula">Modelo:</label>
+			<input type='text' name="modelo" value='<?php echo $modelo ?>'>
+		</div>
+		<div>
+			<label for="cedula">Estado:</label>
+			<input type='text' name="estado" value='<?php echo $estado ?>'>
+		</div>
+		<section>
+			<input type='reset' value=Limpiar>
+			<input type='submit'>
+		</section>
+
+	</form>
 </body>
 </html>

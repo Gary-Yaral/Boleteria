@@ -1,74 +1,67 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Resultados:</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
+	
+</body>
+</html>
 <body>
+	<div class="opciones">
+		<a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscar.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Resultado:</h1>
 
 <?php
 $chofer=$_REQUEST["chofer"];
 $placa=$_REQUEST["placa"];
 $matricula=$_REQUEST["mat"];
 $capacidad=$_REQUEST["cap"];
-$mod=$_REQUEST["mod"];
-$est=$_REQUEST["est"];
+$modelo=$_REQUEST["mod"];
+$estado=$_REQUEST["est"];
+$con = mysqli_connect("localhost","root","","boletos"); 
+$table = "bus"; 
+$sql = "insert into $table (chofer, placa, matricula, capacidad, modelo, estado) values ('$chofer','$placa','$matricula','$capacidad','$modelo','$estado')";
+$resultado = $con->query($sql);
 
-
-echo"<center><table border=2 bgcolor='white' align='center'></center>";
-echo"<tr>";
-      echo"<td bgcolor='#E38DED'><font color='black'>Chofer</td>";
-      echo"<td bgcolor='#E38DED'><font color='black'>Placa</td>";
-	     echo"<td bgcolor='#E38DED'>Matricula</td>";
-			  echo"<td bgcolor='#E38DED'>Capacidad</td>";
-			   echo"<td bgcolor='#E38DED'>Modelo</td>";
-			      echo"<td bgcolor='#E38DED'>Estado</td>";
-echo"</tr>";
-echo"<tr>";
- echo"<td>$chofer</td>";
- echo"<td>$placa</td>";
-	   echo"<td>$matricula</td>";
-	   echo"<td><center>$capacidad</center></td>";
-	   echo"<td>$mod</td>";
-	   echo"<td>$est </td>";
-echo"</tr>";	
-echo"</table>";   
-//conectar a la bd
-  $link = mysql_connect("localhost","root",""); 
-  mysql_select_db("boletos", $link);
-
-
-$guardar=mysql_query("insert into bus(chofer, placa, matricula, capacidad, modelo, estado) values ('$chofer','$placa','$matricula','$capacidad','$mod','$est')", $link);
-
-
-echo "<br> Datos guardados correctamente";
-
-
-
+if($resultado > 0) {
 ?>
-
-
+	<table class="tabla-resultados">
+		<thead>
+			<tr>	
+				<td>Chofer</td>
+				<td>Placa</td>
+				<td>Matrícula</td>
+				<td>Capacidad</td>
+				<td>Modelo</td>
+				<td>Estado</td>
+			</tr>				  
+		</thead>
+		<tbody>
+			<td><?php echo $chofer ?></td>
+			<td><?php echo $placa ?></td>
+			<td><?php echo $matricula ?></td>
+			<td><?php echo $capacidad ?></td>
+			<td><?php echo $modelo ?></td>
+			<td><?php echo $estado ?></td>
+		</tbody>
+	</table>
+	<div class="mensaje">Datos ingresados correctamente</div>
+<?php 
+} else {
+?>
+	<div class="mensaje-error">No se ha podido ingresar los datos</div>
+<?php
+}
+?>
 </body>
 
 </html>

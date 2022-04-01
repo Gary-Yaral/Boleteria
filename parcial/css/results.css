@@ -1,0 +1,233 @@
+body {
+    align-items: center;
+    display: flex;
+    width: 95%;
+    height: 100%;
+    flex-direction: column;
+    font-family: Arial;
+}
+
+.tabla-resultados{
+    border-collapse: collapse;
+    box-shadow: 1px 1px 3px 1px rgb(238, 238, 238);
+    box-sizing: border-box;
+}
+
+.tabla-resultados thead {
+    background: rgb(248, 248, 248);
+}
+
+.titulo-resultados {
+    display: flex; 
+    justify-content: center;
+    width: 100%;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
+.opciones {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+thead {
+    font-weight: 500;
+    color: rgb(153, 153, 153);
+    box-sizing: border-box;
+}
+
+th, td {
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.form-buscar {
+    height: fit-content;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+    box-shadow: 1px 1px 3px 1px rgb(238, 238, 238);
+    box-sizing: border-box;
+}
+
+.form-buscar div {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form-buscar input,
+.form-buscar select{
+    width: 100%;
+    box-sizing: border-box;
+    height: 2rem;
+    margin-bottom: 10px;
+}
+
+.form-buscar input[type="text"],
+.form-buscar input[type="password"] {
+    border:1px solid rgb(233, 233, 233);
+    outline:none;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.form-buscar input[type="text"]:focus,
+.form-buscar input[type="password"]:focus{
+    border-color: rgb(137, 149, 255);
+}
+
+.form-buscar select{
+    margin-top: .5rem;
+    width: 100%;
+}
+
+.buttons-container{
+    margin-top: 1rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-buscar input[type="submit"] {
+    background:rgb(28, 142, 177);
+    color: white;
+    border:none;
+    cursor:pointer;
+}
+
+.data {
+    display: none;
+}
+
+.check-box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+}
+
+.check-box label{
+    background:red;
+    width: 100%;
+   
+}
+
+.check-box input{
+    background:red;
+    width: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.mensaje {
+    margin-top: 2rem;
+    color: rgb(14, 165, 14);
+}
+
+.mensaje-eliminar {
+    margin-top: 1rem;
+    color: rgb(14, 165, 14);
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.mensaje-error {
+    margin-top: 2rem;
+    color: rgb(255, 78, 47);
+}
+
+.titulo-modal{
+    margin-bottom: 1rem;
+    display: flex;
+    font-size: 16px;
+    width: 100%;
+    justify-content: center;
+}
+
+.titulo-eliminar{
+    width:100%;
+    display: flex;
+    font-size: 16px;
+    width: 100%;
+    justify-content: center;
+}
+
+
+.form-editar {
+    height: fit-content;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 1rem;
+    box-shadow: 1px 1px 3px 1px rgb(238, 238, 238);
+    box-sizing: border-box;
+}
+
+.form-editar div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-editar section {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    width:100%;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    box-sizing: border-box;
+}
+
+.form-editar section input{
+    width: 10rem;
+}
+
+.form-editar input[type="text"],
+.form-editar input[type="password"] {
+    border:1px solid rgb(233, 233, 233);
+    outline:none;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.form-editar input,
+.form-editar select{
+    width: 100%;
+    box-sizing: border-box;
+    height: 2rem;
+    margin-bottom: 10px;
+}
+
+.form-editar input[type="text"],
+.form-editar input[type="password"] {
+    border:1px solid rgb(233, 233, 233);
+    outline:none;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.form-editar input[type="text"]:focus,
+.form-editar input[type="password"]:focus{
+    border-color: rgb(137, 149, 255);
+}
+
+.form-editar select{
+    margin-top: .5rem;
+    width: 100%;
+}
+
+.form-editar input[type="submit"] {
+    background:rgb(28, 142, 177);
+    color: white;
+    border:none;
+    cursor:pointer;
+}

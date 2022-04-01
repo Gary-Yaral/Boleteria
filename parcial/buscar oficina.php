@@ -1,56 +1,31 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Ingreso Oficinas</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-
-<body>
-
-
-
-<?php
-echo"<form action='CEoficina.php' method='post'> ";
-echo" <center>
-<table border=1 width=500></center>
-<tr><td>
-Ingrese oficina: </td><td><input type='text' name=nombre></td></tr>
-<td colspan = 2>
-
-<center>
-<input type='reset' value=Limpiar>
-<input type='submit' ></center></td>
-</table>
-
-";
-
-
-echo"</form>";
-?>
-
-
-
+	<div class="opciones">
+        <a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
+        <a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
+        <a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Buscar Oficina</h1>
+    <form class="form-buscar" action='CEoficina.php' method='post'> 
+        <select name="nombre" id="">
+            <option value="">Seleccione una oficina</option>
+            <option value="1">Babahoyo</option>
+            <option value="2">Vinces</option>
+        </select>
+        <div>
+            <input type='submit' >
+            <input type='reset' value=Limpiar>
+        </div>
+    </form>
 </body>
 
 </html>

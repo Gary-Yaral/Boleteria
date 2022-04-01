@@ -3,29 +3,23 @@
 <meta charset="UTF-8">
 <title>buses</title>
 
+</head><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario horario.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar horario.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGhorario.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>REGISTROS</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-<body>
+	<div class="opciones">
+		<a href="formulario horario.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscar horario.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGhorario.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Horarios</h1>
 
 <?php
 
@@ -36,41 +30,51 @@ $sql = "select * from $table";
 $resultado = $con->query($sql);
 $filas = mysqli_num_rows($resultado);
 
-if($filas==0)
-{
-echo"<center>No existen datos</center>";
-}
-else
-{
-//echo"Si existen datos";	
+if($filas === 0){
+	?>
+		<h3 class="No-resultado">No existen datos</h3>";
+	<?php
+	} else {	
+	?>
+		<table class="tabla-resultados">
+			<thead>
+				<tr>	
+					<td>Hora Llegada</td>
+					<td>Hoa Salida</td>
+					<td>Estado</td> 
+					<td>Eliminar</td> 
+					<td>Editar</td> 
+				</tr>				  
+			</thead>
+			<tbody>
+			
+			<?php  
+			while ($fila = $resultado->fetch_assoc()){ 
+				$horallegada=$fila["hora_llegada"];
+				$horasalida=$fila["hora_salida"];
+				$estado=$fila["estado"];
+			
+			?>
+			<tr>
+				<td><?php echo $horallegada ?></td>
+				<td><?php echo $horasalida ?></td>
+				<td><?php echo $estado ?></td>			
+				<td>
+					<a href='eliminar horario.php?horallegada=$horallegada'>
+						<img src='imagenes/eliminar.png' width=35>
+					</a>
+				</td>
+				<td>
+					<a href='editar horario.php?horallegada=$horallegada'>
+						<img src='imagenes/editar.png' width=25>
+					</a>
+				</td>
+	    	</tr>
 
-echo "<center><table border=1 bgcolor='white' align='center'></center>";
-echo"<tr>";
-   echo"<td bgcolor='#E38DED'><font color='black'>Hora llegada</td>";
-      echo"<td bgcolor='#E38DED'><font color='black'>Hora salida</td>";
-	     echo"<td bgcolor='#E38DED'><font color='black'>estado</td>";
-				  echo"<td>Eliminar</td>";
-				  echo"<td>Editar</td>";
-echo"</tr>";
-
- 	while ($fila = $resultado->fetch_assoc()){
-		echo"<tr>";
-		$horallegada=$fila["hora_llegada"];
-		$horasalida=$fila["hora_salida"];
-	   	$estado=$fila["estado"];
-	    echo"<td>$horallegada</td>";
-		echo"<td>$horasalida</td>";
-		echo"<td>$estado</td>";
-		echo"<td><a href='eliminar horario.php?horallegada=$horallegada'><center><img src='imagenes/eliminar.png' width=35></center></a></td>";
-		
-		echo"<td><a href='editar horario.php?horallegada=$horallegada'><center><img src='imagenes/editar.png' width=25></center></a></td>";
-	    echo"</tr>";
-
-}
-echo "</table>";
-}
-
-?>
+			<?php } ?>
+		</tbody>
+	</table>
+<?php }?>
 
 </body>
 

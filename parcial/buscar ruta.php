@@ -1,55 +1,31 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario ruta.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar ruta.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGruta.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Ingreso Rutas</h1></center>
+	<div class="opciones">
+        <a href="formulario ruta.php"><input type="button" value= "INGRESAR"></a>
+        <a href="buscar ruta.php"><input type="button" value= "BUSCAR"></a>
+        <a href="CGruta.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Buscar Ruta</h1>
 
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-
-<body>
-
-
-
-<?php
-echo"<form action='CEruta.php' method='post'> ";
-echo" <center>
-<table border=1 width=500></center>
-<tr><td>
-Ingrese numero de ruta: </td><td><input type='text' name='n_ruta'></td></tr>
-<td colspan = 2>
-
-<center>
-<input type='reset' value=Limpiar>
-<input type='submit' ></center></td>
-</table>
-
-";
-
-
-echo"</form>";
-?>
-
-
+    <form class="form-buscar" action='CEruta.php' method='post'>
+        <select name="n_ruta" id="">
+            <option value="">Seleccione una ruta</option>
+            <option value="0">Babahoyo - Vinces</option>
+        </select>
+        <div>
+            <input type='submit' value ="Buscar">
+            <input type='reset' value=Limpiar>
+        </div>
+    </form>
 
 </body>
 

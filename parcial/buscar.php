@@ -1,55 +1,33 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Ingrese placa</h1></center>
+	
+</body>
+</html>
+<body>
+	<div class="opciones">
+        <a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
+        <a href="buscar.php"><input type="button" value= "BUSCAR"></a>
+        <a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Buscar Bus</h1>
+    <form class="form-buscar" action='CEbus.php' method='post'>
+        <label for="nombre">Ingrese la placa:</label> 
+        <input type='text' name=placa>
+        <div>
+            <input type='submit' value ="Buscar">
+            <input type='reset' value=Limpiar>
+        </div>
+</form>
 
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-
-<?php
-echo"<form action='CEbus.php' method='post'> ";
-echo"<center>
-<table border=1 width=500 align='center'>
-<tr><td>
-Ingrese placa: </td><td><input type='text' name=placa></td></tr>
-<td colspan = 2>
-
-<center>
-<input type='reset' value=Limpiar>
-<input type='submit' ></center></td>
-</table>
-</center>
-";
-
-
-echo"</form>";
-?>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-
-<footer>
-</footer>
 </body>
 
 </html>
