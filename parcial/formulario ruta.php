@@ -1,65 +1,45 @@
-<html>
+<<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario ruta.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar ruta.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGruta.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Ingreso Ruta</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-
-<body>
-<body>
-
-
-
-<?php
-echo"<form action='procesar ruta.php' method='post'> ";
-echo"<center><table border=1></center>
-
-<tr><td>
-Numero de ruta: </td><td><input type='text' name=n_ruta><br></td></tr>
-<tr><td>
-Origen: </td><td><input type='text' name=origen><br></td></tr>
-<tr><td>
-Destino: </td><td><input type='text' name=destino><br></td></tr>
-<tr><td>
-Estado: </td><td><input type='text' name=estado><br></td></tr>
-
-<tr>
-<td colspan=2><center>
-<input type='reset' value=Limpiar>
-
-<input type='submit'><center></td></tr>
-
-
-
-</table>";
-
-
-echo"</form>";
-?>
-
-
-
+	
 </body>
-
+</html>
+<body>
+	<div class="opciones">
+        <a href="formulario ruta.php"><input type="button" value= "INGRESAR"></a>
+        <a href="buscar ruta.php"><input type="button" value= "BUSCAR"></a>
+        <a href="CGruta.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+    <!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Nueva Oficina</h1>
+    <form class="form-editar" action='procesar ruta.php' method='post'>
+        <div>
+            <label for="">N° Ruta</label>
+            <input type='number' name=n_ruta>
+        </div>
+        <div>
+            <label for="">Origen</label>
+            <input type='text' name=origen>
+        </div>
+        <div>
+            <label for="">Destino</label>
+            <input type='text' name=destino>
+        </div>
+        <div>
+            <label for="">Valor</label>
+            <input type='number' name=valor>
+        </div>
+        <section>
+            <input type='reset' value=Limpiar>
+            <input type='submit' value="Registrar">
+        </section>
+    </form>
+</body>
 </html>

@@ -30,7 +30,7 @@
 
 	if($filas === 0){
 ?>
-		<h3 class="No-resultado">No existen datos</h3>";
+		<h3 class="No-resultado">No existen datos</h3>
 <?php
 	} else {
 ?>
@@ -38,6 +38,7 @@
 	<table class="tabla-resultados">
 		<thead>
 			<tr>	
+				<td>Cédula</td>
 				<td>Nombres</td>
 				<td>Apellidos</td>
 				<td>Teléfono</td>
@@ -50,12 +51,14 @@
     		<tr>
 
 			<?php
+				$cedula=$fila["cedula"];
 				$nombres=$fila["nombres"];
 				$apellidos=$fila["apellidos"];
 				$telefono=$fila["telefono"];
 				$direccion=$fila["direccion"];
 				$correo=$fila["correo"];		   	 	 
 			?>
+			<td><?php echo $cedula ?></td>
 			<td><?php echo $nombres ?></td>
 			<td><?php echo $apellidos ?></td>
 			<td><?php echo $telefono ?></td>

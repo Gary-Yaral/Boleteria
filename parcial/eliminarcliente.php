@@ -40,7 +40,7 @@ if (strlen(@$Presionado)==0){
     <strong>¿Desea eliminar este cliente?</strong>
 </aside>
   <div>
-    <a href=CGcliente.php Title=Cancelar>Cancelar</a>
+    <a class="edit-cancelar" href=CGcliente.php Title=Cancelar>Cancelar</a>
     <input type=submit value='Eliminar' name=Submit alt='Eliminar'>
   </div>
 <?php

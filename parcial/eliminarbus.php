@@ -22,12 +22,12 @@
 
 
 <?php 
-@$placa=$_REQUEST["placa"];
+@$id_bus=$_REQUEST["id_bus"];
 // por primera vez presionado=0 
 @$Presionado=$_REQUEST["Presionado"];
 ?>
 
-<form class="form-buscar" name='formulario' method='post' action='eliminarbus.php?Presionado=si&placa=<?php echo $placa ?>'>
+<form class="form-buscar" name='formulario' method='post' action='eliminarbus.php?Presionado=si&id_bus=<?php echo $id_bus ?>'>
 
 <?php
 //conectar a la bd
@@ -40,7 +40,7 @@ if (strlen(@$Presionado)==0){
     <strong>¿Desea eliminar este bus?</strong>
 </aside>
   <div>
-    <a class="btn-cancelar" href=CGbus.php Title=Cancelar>Cancelar</a>
+    <a class="edit-cancelar" href=CGbus.php Title=Cancelar>Cancelar</a>
     <input type=submit value='Eliminar' name=Submit alt='Eliminar'>
   </div>
 <?php
@@ -48,7 +48,7 @@ if (strlen(@$Presionado)==0){
 }
 
 if (strlen(@$Presionado)==2){
-  $sql = "DELETE FROM $table where placa='$placa'";
+  $sql = "DELETE FROM $table where id_bus='$id_bus'";
   $resultado = $con->query($sql);
   if($resultado == 1) {
 ?>  <h3 class="titulo-eliminar">Resultado</h3>

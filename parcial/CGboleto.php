@@ -27,7 +27,7 @@ $filas = mysqli_num_rows($resultado);
 
 if($filas === 0){
 	?>
-		<h3 class="No-resultado">No existen datos</h3>";
+		<h3 class="No-resultado">No existen datos</h3>
 	<?php
 	} else {	
 	?>

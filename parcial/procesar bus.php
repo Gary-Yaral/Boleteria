@@ -53,6 +53,7 @@ if($resultado > 0) {
 		</tbody>
 	</table>
 	<div class="mensaje">Datos ingresados correctamente</div>
+	<meta http-equiv='refresh' content='1;URL=CGbus.php?'/>
 <?php 
 } else {
 ?>

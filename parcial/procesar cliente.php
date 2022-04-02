@@ -1,30 +1,24 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario cliente.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar cliente.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGcliente.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Ingreso cliente</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
+	
+</body>
+</html>
+<body>
+	<div class="opciones">
+		<a href="formulario cliente.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscar cliente.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGcliente.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Resultado:</h1>
 
 <?php
 $cedula=$_REQUEST["cedula"];
@@ -33,40 +27,42 @@ $apellidos=$_REQUEST["apellidos"];
 $telefono=$_REQUEST["telefono"];
 $direccion=$_REQUEST["direccion"];
 $correo=$_REQUEST["correo"];
-echo"<center><table border=2 bgcolor='white' align='center'></center>";
-echo"<tr>";
- echo"<td bgcolor='#E38DED'><font color='black'>Cedula</td>";
-      echo"<td bgcolor='#E38DED'><font color='black'>nombres</td>";
-	     echo"<td bgcolor='#E38DED'>apellidos</td>";
-			  echo"<td bgcolor='#E38DED'>telefono</td>";
-			   echo"<td bgcolor='#E38DED'>direccion</td>";
-			      echo"<td bgcolor='#E38DED'>correo</td>";
-				  
-				  echo"</tr>";
-				  echo"<tr>";
-				  echo"<td>$cedula</td>";
-				    echo"<td>$nombres</td>";
-	    echo"<td>$apellidos</td>";
-	   echo"<td>$telefono</td>";
-	    echo"<td>$direccion</td>";
-	   echo"<td>$correo</td>";
-	   echo"</tr>";
-	   echo"</table>"; 
 
-//conectar a la bd
-  $link = mysql_connect("localhost","root",""); 
-  mysql_select_db("boletos", $link);
+$con = mysqli_connect("localhost","root","","boletos"); 
+$table = "cliente"; 
+$sql = "insert into $table (cedula, nombres, apellidos, telefono, direccion, correo) values ('$cedula','$nombres','$apellidos','$telefono','$direccion','$correo')";
+$resultado = $con->query($sql);
 
-//insertar datos
-$guardar=mysql_query("insert into cliente(cedula, nombres, apellidos, telefono, direccion, correo) values ('$cedula','$nombres','$apellidos','$telefono','$direccion','$correo')", $link);
-
-echo "Datos guardados correctamente";
-
-
-
+if($resultado > 0) {
 ?>
-
-
+	<table class="tabla-resultados">
+		<thead>
+			<tr>	
+				<td>Cédula</td>
+				<td>Nombres</td>
+				<td>Apellidos</td>
+				<td>Teléfono</td>
+				<td>Direción</td>
+				<td>Correo</td>
+			</tr>				  
+		</thead>
+		<tbody>
+			<td><?php echo $cedula ?></td>
+			<td><?php echo $nombres ?></td>
+			<td><?php echo $apellidos ?></td>
+			<td><?php echo $telefono ?></td>
+			<td><?php echo $direccion ?></td>
+			<td><?php echo $correo ?></td>
+		</tbody>
+	</table>
+	<div class="mensaje">Datos ingresados correctamente</div>
+	<meta http-equiv='refresh' content='1;URL=CGcliente.php?'/>
+<?php 
+} else {
+?>
+	<div class="mensaje-error">No se ha podido ingresar los datos</div>
+<?php
+}
+?>
 </body>
-
 </html>

@@ -1,117 +1,68 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
+	
+</body>
+</html>
+<body>
+	<div class="opciones">
+    <a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
+    <a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
+    <a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >¡Atención!</h1>
 
 
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
 <?php 
-$nombre=$_REQUEST["nombre"];
+@$id_oficina=$_REQUEST["id_oficina"];
 // por primera vez presionado=0 
 @$Presionado=$_REQUEST["Presionado"];
-echo "<form name=formulario method=post action=eliminaroficina.php?Presionado=si&nombre=$nombre>";
+?>
 
+<form class="form-buscar" name='formulario' method='post' action='eliminaroficina.php?Presionado=si&id_oficina=<?php echo $id_oficina ?>'>
+
+<?php
 //conectar a la bd
-  $link = mysql_connect("localhost","root",""); 
-  mysql_select_db("boletos", $link);
-  
-  
-  
-//busqueda si esa cédula todavía existe
-$result = mysql_query("SELECT * FROM oficina Where (nombre='$nombre') ", $link); 
-$row = mysql_num_rows($result);
+$con = mysqli_connect("localhost","root","","boletos"); 
+$table = "oficina"; 
 
-echo("<br><br>");
-
-echo "<center>";
-
-
-if (strlen(@$Presionado)==0)
-{
-echo"<center><table  border='1' cellspacing='0' cellpadding='0' style='width:300px;'></center>";
-echo"<tr>";
-echo"<td>";
-echo"<center>Eliminar Oficina</center>";
-echo"</td>";
-echo"</tr>";
-echo"<tr>";
-echo"<td>";
-echo"<table border='0' cellspacing='0' cellpadding='0' style='width:300px;'>";
-echo"<tbody>";
-echo"<tr>";
-echo"<td width=40>";
-echo"<center><img src=icono/info.gif border=0></center>";
-echo"</td>";
-echo"<td style='text-align:center;'>
-<br>¿Esta seguro de eliminar esta oficina?</td>";
-echo"</tr>";
-echo"<td colspan='2'>";
-echo"<center>";
-echo"<a href=CGoficina.php Title=Cancelar>Cancelar</a>";
-echo"<input type=submit value='Eliminar' name=Submit alt='Eliminar'>";
-echo"</center>";
-echo"</td>";
-echo"</tbody>";
-echo"</table>";
-//nuevo
+if (strlen(@$Presionado)==0){
+?>
+  <aside class="titulo-modal">
+    <strong>¿Desea eliminar esta oficina?</strong>
+</aside>
+  <div>
+    <a class="edit-cancelar" href=CGoficina.php Title=Cancelar>Cancelar</a>
+    <input type=submit value='Eliminar' name=Submit alt='Eliminar'>
+  </div>
+<?php
 
 }
 
 if (strlen(@$Presionado)==2){
-
-$result = mysql_query("DELETE FROM oficina WHERE nombre='$nombre' ", $link); 
-$result = mysql_query($result);
-echo "</td></tr></table>";
-echo"<table border='1' cellspacing='0' cellpadding='0' style='width:290px;'>";
-echo"<tr>";
-echo"<td>";
-echo"<center>Información</center>";
-echo"</td>";
-echo"</tr>";
-
-echo"<tr>";
-echo"<td>";
-echo"<table border='0' class='' cellspacing='0' cellpadding='0' style='width:290px;'>";
-echo"<tbody>";
-
-echo"<tr>";
-echo"<td width=40>";
-echo"<center><img src=icono/info.gif border=0></center>";
-echo"</td>";
-echo"<td style='text-align:center;'><br><span style='font-family:Tahoma, sans-serif;font-size:12px;font-weight:bold;white-space:nowrap;'>El registro fue eliminado correctamente</span></td>";
-echo"</tr>";
-
-echo"</tbody>";
-echo"</table>";
-//etiqueta de html que sirve para redireccionar automáticamente en los segundos que ud quiera
-echo"<meta http-equiv='refresh' content='2;URL=CGoficina.php?'/>";
-
-
-
-}
-echo "</table>";
-echo "</form>";
+  $sql = "DELETE FROM $table where id_oficina=$id_oficina";
+  $resultado = $con->query($sql);
+  if($resultado == 1) {
+?>  <h3 class="titulo-eliminar">Resultado</h3>
+    <section class="mensaje-eliminar">Oficina eliminada</section>
+    <meta http-equiv='refresh' content='1;URL=CGoficina.php?'/>
+<?php
+} else {
 ?>
+    <div>No se ha podido eliminar oficina</div>
+<?php
+  } 
+}
+?> 
+
 </form>
-</div>
 </body>
 </html>

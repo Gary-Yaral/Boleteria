@@ -1,65 +1,46 @@
-<html>
+<<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Ingreso Oficinas</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-
+	
+</body>
+</html>
 <body>
-<body>
-
-
-
-<?php
-echo"<form action='procesar oficina.php' method='post'> ";
-echo"<center><table border=1></center>
-
-<tr><td>
-Nombre: </td><td><input type='text' name=nombre><br></td></tr>
-<tr><td>
-Direccion: </td><td><input type='text' name=direccion><br></td></tr>
-<tr><td>
-Telefono: </td><td><input type='text' name=telefono><br></td></tr>
-<tr><td>
-Correo: </td><td><input type='text' name=correo><br></td></tr>
-
-<tr>
-<td colspan=2><center>
-<input type='reset' value=Limpiar>
-
-<input type='submit'><center></td></tr>
-
-
-
-</table>";
-
-
-echo"</form>";
-?>
-
-
+	<div class="opciones">
+        <a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
+        <a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
+        <a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+    <!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Nueva Oficina</h1>
+    <form class="form-editar" action='procesar oficina.php' method='post'>
+        <div>
+            <label for="">Nombre</label>
+            <input type='text' name=nombre>
+        </div>
+        <div>
+            <label for="">Direción</label>
+            <input type='text' name=direccion>
+        </div>
+        <div>
+            <label for="">Teléfono</label>
+            <input type='text' name=telefono>
+        </div>
+        <div>
+            <label for="">Correo</label>
+            <input type='text' name=correo>
+        </div>
+        <section>
+            <input type='reset' value=Limpiar>
+            <input type='submit' value="Registrar">
+        </section>
+    </form>
 
 </body>
 
-</html>

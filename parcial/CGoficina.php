@@ -35,6 +35,7 @@ if($filas === 0){
 		<table class="tabla-resultados">
 			<thead>
 				<tr>	
+					<td>ID Oficina</td>
 					<td>Nombre</td>
 					<td>Direción</td>
 					<td>Teléfono</td>
@@ -47,6 +48,7 @@ if($filas === 0){
 			
 			<?php  
 			while ($fila = $resultado->fetch_assoc()){ 
+				$id_oficina=$fila["id_oficina"];
 				$nombre=$fila["nombre"];
 				$direccion=$fila["direccion"];
 				$telefono=$fila["telefono"];
@@ -54,17 +56,18 @@ if($filas === 0){
 				
 			?>
 			<tr>
+				<td><?php echo $id_oficina ?></td>
 				<td><?php echo $nombre ?></td>
 				<td><?php echo $direccion ?></td>
 				<td><?php echo $telefono ?></td>
 				<td><?php echo $correo ?></td>
 				<td>
-					<a href='eliminaroficina.php?nombre=$nombre'>
+					<a href='eliminaroficina.php?id_oficina=<?php echo $id_oficina ?>'>
 						<img src='imagenes/eliminar.png' width=35>
 					</a>
 				</td>	
 				<td>
-					<a href='editar oficina.php?nombre=$nombre'>
+					<a href='editar oficina.php?id_oficina=<?php echo $id_oficina ?>'>
 						<img src='imagenes/editar.png' width=25>
 					</a>
 				</td>

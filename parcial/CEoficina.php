@@ -1,76 +1,76 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Buses</title>
 
+	<link rel="stylesheet" href="css/results.css">
 </head>
-
 <body>
-<a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Ingreso Oficinas</h1></center>
+	<div class="opciones">
+		<a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
+	</div>
 
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-
-
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Resultados:</h1>
 
 <?php
-$nombre=$_REQUEST["nombre"];
-//conectar a la bd
-$con = mysqli_connect("localhost","root","","boletos"); 
-$table = "oficina"; 
-$sql = "select * from $table where nombre='$nombre'";
-$resultado = $con->query($sql);
-$filas = mysqli_num_rows($resultado);
+	$id_oficina=$_REQUEST["id_oficina"];
 
-if($filas==0){
-	echo"<center>No existen datos</center>";
-}
-else {
+	//conectar a la bd
+	$con = mysqli_connect("localhost","root","","boletos");
+	$table = "oficina"; 
+	$sql = "select * from $table where id_oficina='$id_oficina'";
+	$resultado = $con->query($sql);
+	$filas = mysqli_num_rows($resultado);
 
-echo "<center><table border=1>";
-echo"<tr>";
-   
-	     echo"<td bgcolor='#E38DED'>Direccion</td>";
-			  echo"<td bgcolor='#E38DED'>Telefono</td>";
-			   echo"<td bgcolor='#E38DED'>Correo</td>";	  
-				  
-echo"</tr>";
- while ($fila = $resultado->fetch_assoc()){
-       echo"<tr>";
-	   $direccion=$fila["direccion"];
-	   $telefono=$fila["telefono"];
-	   $correo=$fila["correo"];
-	   
-	   echo"<td>$direccion</td>";
-	   echo"<td>$telefono</td>";
-	   echo"<td>$correo</td>";
-	   
-	          echo"</tr>";
-$i++;
-}
-echo "</table></center>";
-}
-
-
+	if($filas === 0){
+?>
+		<h3 class="No-resultado">No existen datos</h3>
+<?php
+	} else {
 ?>
 
+	<table class="tabla-resultados">
+		<thead>
+			<tr>	
+				<td>ID Oficina</td>
+				<td>Nombre</td>
+				<td>Direción</td>
+				<td>Teléfono</td>
+				<td>Correo</td> 
+			</tr>				  
+		</thead>
+		<tbody>
+		<?php  while ($fila = $resultado->fetch_assoc()){ ?>
+    		<tr>
 
-
+			<?php
+				$id_oficina=$fila["id_oficina"];
+				$nombre=$fila["nombre"];
+				$telefono=$fila["telefono"];
+				$direccion=$fila["direccion"];
+				$correo=$fila["correo"];		   	 	 
+			?>
+			<td><?php echo $id_oficina ?></td>
+			<td><?php echo $nombre ?></td>
+			<td><?php echo $telefono ?></td>
+			<td><?php echo $direccion ?></td>
+			<td><?php echo $correo ?></td>
+			
+			</tr>
+		<?php 
+		}
+		?>
+		</tbody>
+	</table>
+	<?php
+	}
+	?>
 </body>
 
 </html>

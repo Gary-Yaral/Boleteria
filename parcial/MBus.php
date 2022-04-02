@@ -44,7 +44,7 @@ $data = array(@$chofer, @$placa, @$matricula, @$capacidad, @$modelo);
     <input type='hidden' name="capacidad" value='<?php echo $capacidad ?>'>
     <input type='hidden' name="modelo" value='<?php echo $modelo ?>'>
     <div>
-        <a href=CGbus.php Title=Cancelar>Cancelar</a>
+        <a class="edit-cancelar" href=CGbus.php Title=Cancelar>Cancelar</a>
         <input type=submit value='Aceptar' name=Submit alt='Aceptar'>
     </div>
 </form>

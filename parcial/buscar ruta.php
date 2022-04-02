@@ -17,16 +17,38 @@
 	<h1 class="titulo-resultados" >Buscar Ruta</h1>
 
     <form class="form-buscar" action='CEruta.php' method='post'>
-        <select name="n_ruta" id="">
+        <select name="id_ruta" id="">
             <option value="">Seleccione una ruta</option>
-            <option value="0">Babahoyo - Vinces</option>
+<?php
+$con = mysqli_connect("localhost","root","","boletos");
+$table = "ruta"; 
+$sql = "select * from $table";
+$resultado = $con->query($sql);
+$filas = mysqli_num_rows($resultado);
+
+
+if($filas === 0){
+	?>
+		<h3 class="No-resultado">No existen datos</h3>
+	<?php
+	} else {	 
+		while ($fila = $resultado->fetch_assoc()){
+            $id_ruta = $fila['id_ruta'];
+            $origen = $fila['origen'];
+            $destino = $fila['destino'];
+    ?>
+            <option value="<?php echo $id_ruta ?>"><?php echo $origen.'-'.$destino ?></option>
+    <?php
+        }
+    }
+    ?>
         </select>
         <div>
-            <input type='submit' value ="Buscar">
+            <input type='submit' value="Buscar">
             <input type='reset' value=Limpiar>
         </div>
     </form>
-
+         
 </body>
 
 </html>

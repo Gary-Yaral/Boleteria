@@ -38,9 +38,11 @@ if($filas === 0){
 		<table class="tabla-resultados">
 			<thead>
 				<tr>	
+					<td>ID Ruta</td>
 					<td>N° Ruta</td>
 					<td>Origen</td>
 					<td>Destino</td>
+					<td>Valor</td>
 					<td>Eliminar</td> 
 					<td>Editar</td> 
 				</tr>				  
@@ -50,21 +52,25 @@ if($filas === 0){
 			<?php  
 			while ($fila = $resultado->fetch_assoc()){ 
 		
+				$id_ruta=$fila["id_ruta"];
 				$n_ruta=$fila["n_ruta"];
 				$origen=$fila["origen"];
 				$destino=$fila["destino"];
+				$valor=$fila["valor"];
 			?>
 				<tr>
+					<td><?php echo $id_ruta ?></td>
 					<td><?php echo $n_ruta ?></td>
 					<td><?php echo $origen ?></td>
 					<td><?php echo $destino ?></td>
+					<td><?php echo $valor ?></td>
 					<td>
-						<a href='eliminaruta.php?n_ruta=$n_ruta'>
+						<a href='eliminaruta.php?id_ruta=<?php echo $id_ruta ?>'>
 							<img src='imagenes/eliminar.png' width=35>
 						</a>
 					</td>			
 					<td>
-						<a href='editar ruta.php?n_ruta=$n_ruta'>
+						<a href='editar ruta.php?id_ruta=<?php echo $id_ruta ?>'>
 							<img src='imagenes/editar.png' width=25>
 						</a>
 					</td>

@@ -19,14 +19,36 @@
     <form class="form-buscar" action='CEhorario.php' method='post'> 
         <select name="hora_salida" id="">
             <option value="">Selecione un horario</option>
-            <option value="10:00">10:00</option>
+<?php
+$con = mysqli_connect("localhost","root","","boletos");
+$table = "horario"; 
+$sql = "select * from $table";
+$resultado = $con->query($sql);
+$filas = mysqli_num_rows($resultado);
+
+
+if($filas === 0){
+	?>
+		<h3 class="No-resultado">No existen datos</h3>
+	<?php
+	} else {	 
+		while ($fila = $resultado->fetch_assoc()){
+            $id_horario = $fila['id_ruta'];
+            $ruta = $fila['origen'];
+            $destino = $fila['destino'];
+    ?>
+            <option value="<?php echo $id_ruta ?>"><?php echo $origen.'-'.$destino ?></option>
+    <?php
+        }
+    }
+    ?>
         </select>
         <div>
-            <input type='submit' value ="Buscar">
+            <input type='submit' value="Buscar">
             <input type='reset' value=Limpiar>
         </div>
     </form>
-
+         
 </body>
 
 </html>

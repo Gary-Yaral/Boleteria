@@ -1,68 +1,62 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
+	
+</body>
+</html>
+<body>
+	<div class="opciones">
+	<a href="formulario oficina.php"><input type="button" value= "INGRESAR"></a>
 <a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
 <a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Resultados</h1></center>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Resultado:</h1>
 
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
 <?php
 $nombre=$_REQUEST["nombre"];
 $direccion=$_REQUEST["direccion"];
 $telefono=$_REQUEST["telefono"];
 $correo=$_REQUEST["correo"];
 
+$con = mysqli_connect("localhost","root","","boletos"); 
+$table = "oficina"; 
+$sql = "INSERT INTO $table (nombre, direccion, telefono, correo) VALUES ('$nombre','$direccion','$telefono','$correo')";
+$resultado = $con->query($sql);
 
-
-echo"<center><table border=2 bgcolor='white' align='center'></center>";
-echo"<tr>";
-      echo"<td bgcolor='#E38DED'><font color='black'>Nombre</td>";
-      echo"<td bgcolor='#E38DED'><font color='black'>Direccion</td>";
-	     echo"<td bgcolor='#E38DED'>Telefono</td>";
-			  echo"<td bgcolor='#E38DED'>Correo</td>";
-			   echo"</tr>";
-echo"<tr>";
- echo"<td>$nombre</td>";
- echo"<td>$direccion</td>";
-	   echo"<td>$telefono</td>";
-	   echo"<td><center>$correo</center></td>";
-	   
-echo"</tr>";	
-echo"</table>";
-echo"<br><br><br>";  
-//conectar a la bd
-  $link = mysql_connect("localhost","root",""); 
-  mysql_select_db("boletos", $link);
-
-//insertar datos
-$guardar=mysql_query("insert into oficina(nombre, direccion, telefono, correo) values ('$nombre','$direccion','$telefono','$correo')", $link);
-
-echo "Datos guardados correctamente";
-
-
-
+if($resultado > 0) {
 ?>
-
-
+	<table class="tabla-resultados">
+		<thead>
+			<tr>	
+				<td>Nombre</td>
+				<td>Dirección</td>
+				<td>Teléfono</td>
+				<td>Correo</td>
+			</tr>				  
+		</thead>
+		<tbody>
+			<td><?php echo $nombre ?></td>
+			<td><?php echo $direccion ?></td>
+			<td><?php echo $telefono ?></td>
+			<td><?php echo $correo ?></td>
+		</tbody>
+	</table>
+	<div class="mensaje">Datos ingresados correctamente</div>
+	<meta http-equiv='refresh' content='1;URL=CGoficina.php?'/>
+<?php 
+} else {
+?>
+	<div class="mensaje-error">No se ha podido ingresar los datos</div>
+<?php
+}
+?>
 </body>
-
 </html>

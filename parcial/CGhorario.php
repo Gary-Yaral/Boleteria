@@ -39,8 +39,10 @@ if($filas === 0){
 		<table class="tabla-resultados">
 			<thead>
 				<tr>	
+					<td>ID Horario</td>
 					<td>Hora Llegada</td>
-					<td>Hoa Salida</td>
+					<td>Hora Salida</td>
+					<td>Nº Bus</td>
 					<td>Eliminar</td> 
 					<td>Editar</td> 
 				</tr>				  
@@ -49,13 +51,17 @@ if($filas === 0){
 			
 			<?php  
 			while ($fila = $resultado->fetch_assoc()){ 
+				$id_horario=$fila["id_horario"];
 				$horallegada=$fila["hora_llegada"];
 				$horasalida=$fila["hora_salida"];
+				$id_bus=$fila["id_bus"];
 			
 			?>
 			<tr>
+				<td><?php echo $id_horario ?></td>
 				<td><?php echo $horallegada ?></td>
 				<td><?php echo $horasalida ?></td>		
+				<td><?php echo $id_bus ?></td>		
 				<td>
 					<a href='eliminar horario.php?horallegada=$horallegada'>
 						<img src='imagenes/eliminar.png' width=35>

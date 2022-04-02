@@ -33,7 +33,7 @@ if($filas === 0){
 	<table class="tabla-resultados">
 		<thead>
 			<tr>	
-				<td>ID</td>
+				<td>ID Bus</td>
 				<td>Chofer</td>
 				<td>Placa</td>
 				<td>Matrícula</td>

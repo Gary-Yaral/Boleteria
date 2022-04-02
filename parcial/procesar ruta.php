@@ -1,74 +1,62 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ruta</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario ruta.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar ruta.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGruta.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Resultados</h1></center>
+	
+</body>
+</html>
+<body>
+	<div class="opciones">
+		<a href="formulario ruta.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscar ruta.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGruta.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Resultado:</h1>
 
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
 <?php
 $n_ruta=$_REQUEST["n_ruta"];
-$origen=$_REQUEST["origen"];
+$origen = $_REQUEST["origen"];
 $destino=$_REQUEST["destino"];
-$estado=$_REQUEST["estado"];
+$valor=$_REQUEST["valor"];
 
-$link = mysql_connect("localhost","root",""); 
-  mysql_select_db("boletos", $link);
+$con = mysqli_connect("localhost","root","","boletos"); 
+$table = "ruta"; 
+$sql = "INSERT INTO $table (n_ruta, origen, destino, valor) VALUES ('$n_ruta','$origen','$destino','$valor')";
+$resultado = $con->query($sql);
 
-
-$result=mysql_query("select * from ruta where n_ruta = '$n_ruta'", $link);
-$row=mysql_num_rows($result);
-if ($row > 0)
-{
-echo"<center>La ruta $n_ruta ya se encuentra registrada en el sistema	</center>";
-}else{
-
-echo"<center><table border=2 bgcolor='white' align='center'></center>";
-echo"<tr>";
-      echo"<td bgcolor='#E38DED'><font color='black'>Numero de Ruta</td>";
-      echo"<td bgcolor='#E38DED'><font color='black'>Origen</td>";
-	     echo"<td bgcolor='#E38DED'>Destino</td>";
-			  echo"<td bgcolor='#E38DED'>Estado</td>";
-			   echo"</tr>";
-echo"<tr>";
- echo"<td>$n_ruta</td>";
- echo"<td>$origen</td>";
-	   echo"<td>$destino</td>";
-	   echo"<td><center>$estado</center></td>";
-	   
-echo"</tr>";	
-echo"</table>";
-echo"<br><br><br>";  
-
-//insertar datos
-$result=mysql_query("insert into ruta(n_ruta, origen, destino, estado) values ('$n_ruta','$origen','$destino','$estado')", $link);
-
-echo "Datos guardados correctamente";
-
-}
-
+if($resultado > 0) {
 ?>
-
-
+	<table class="tabla-resultados">
+		<thead>
+			<tr>	
+				<td>N° Ruta</td>
+				<td>Origen</td>
+				<td>Destino</td>
+				<td>Valor</td>
+			</tr>				  
+		</thead>
+		<tbody>
+			<td><?php echo $n_ruta ?></td>
+			<td><?php echo $origen ?></td>
+			<td><?php echo $destino ?></td>
+			<td><?php echo $valor ?></td>
+		</tbody>
+	</table>
+	<div class="mensaje">Datos ingresados correctamente</div>
+	<meta http-equiv='refresh' content='1;URL=CGruta.php?'/>
+<?php 
+} else {
+?>
+	<div class="mensaje-error">No se ha podido ingresar los datos</div>
+<?php
+}
+?>
 </body>
-
 </html>
