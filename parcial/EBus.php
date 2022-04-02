@@ -28,14 +28,11 @@ $placa=$_REQUEST["placa"];
 $matricula=$_REQUEST["matricula"];
 $capacidad=$_REQUEST["capacidad"];
 $modelo=$_REQUEST["modelo"];
-$estado=$_REQUEST["estado"];
-echo $placa;
 $con = mysqli_connect("localhost","root","","boletos"); 
 $table = "bus"; 
 
-$sql = "UPDATE $table SET chofer ='$chofer', placa ='$placa', matricula = '$matricula', capacidad='$capacidad', modelo ='$modelo', estado='$estado' WHERE id_bus='$id_bus'";
+$sql = "UPDATE $table SET chofer ='$chofer', placa ='$placa', matricula = '$matricula', capacidad='$capacidad', modelo ='$modelo' WHERE id_bus='$id_bus'";
 $resultado = $con->query($sql);
-echo $resultado;
 if($resultado == 1) {
 ?>  
     <h3 class="titulo-eliminar">Resultado</h3>

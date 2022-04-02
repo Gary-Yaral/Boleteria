@@ -34,11 +34,12 @@ if($filas === 0){
 		<table class="tabla-resultados">
 			<thead>
 				<tr>	
-					<td>N° boleto</td>
+					<td>ID boleto</td>
 					<td>Fecha</td>
+					<td>N° boleto</td>
+					<td>ID Cliente</td>
 					<td>Valor</td>
 					<td>N° Asiento</td>
-					<td>Estado</td> 
 					<td>Eliminar</td> 
 					<td>Editar</td> 
 				</tr>				  
@@ -52,21 +53,23 @@ if($filas === 0){
 				$fecha=$fila["fecha"];
 				$valor=$fila["valor"];
 				$n_asiento=$fila["n_asiento"];
-				$estado=$fila["estado"];
+				$id_boleto=$fila["id_boleto"];
+				$id_cliente=$fila["id_cliente"];
 			?>
 			<tr>
-				<td><?php echo $num_boleto ?></td>
+				<td><?php echo $id_boleto ?></td>  
 				<td><?php echo $fecha ?></td>
+				<td><?php echo $num_boleto ?></td>
+				<td><?php echo $id_cliente ?></td>
 				<td><?php echo $valor ?></td>
-				<td><?php echo $n_asiento ?></td>
-				<td><?php echo $estado ?></td>	   
+				<td><?php echo $n_asiento ?></td>  
 				<td>
-					<a href='eliminarboleto.php?num_boleto=$num_boleto'>
+					<a href="eliminarboleto.php?id_boleto=<?php echo  $id_boleto ?>">
 						<img src='imagenes/eliminar.png' width=35>
 					</a>
 				</td>
 				<td>
-					<a href='editarboleto.php?num_boleto=$num_boleto'>
+					<a href='editarboleto.php?id_boleto=<?php echo $id_boleto ?>'>
 						<img src='imagenes/editar.png' width=25>
 					</a>
 				</td>

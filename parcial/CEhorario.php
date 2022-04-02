@@ -46,18 +46,15 @@ echo"<tr>";
    
 	     echo"<td bgcolor='#E38DED'><font color='black'>horallegada</td>";
 			  echo"<td bgcolor='#E38DED'>horasalida</td>";
-			   echo"<td bgcolor='#E38DED'>estado</td>";	  
 				  
 echo"</tr>";
  while ($fila = $resultado->fetch_assoc()){
        echo"<tr>";
 		$horallegada=$fila["hora_llegada"];
 		$horasalida=$fila["hora_salida"];
-		$estado=$fila["estado"];
 
 	   echo"<td>$horallegada</td>";
 	   echo"<td>$horasalida</td>";
-	   echo"<td>$estado</td>";
 	   
 	          echo"</tr>";
 }

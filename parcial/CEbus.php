@@ -56,13 +56,11 @@ echo"</tr>";
 		$matricula=$fila["matricula"];
 		$capacidad=$fila["capacidad"];
 		$mod=$fila["modelo"];
-		$est=$fila["estado"];
 
 		echo"<td>$placa</td>";
 		echo"<td>$matricula</td>";
 		echo"<td><center>$capacidad</center></td>";
 		echo"<td>$mod</td>";
-		echo"<td>$est </td>";
 	   
 	echo"</tr>";
 }

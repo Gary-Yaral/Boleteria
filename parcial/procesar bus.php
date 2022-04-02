@@ -23,13 +23,13 @@
 <?php
 $chofer=$_REQUEST["chofer"];
 $placa=$_REQUEST["placa"];
-$matricula=$_REQUEST["mat"];
-$capacidad=$_REQUEST["cap"];
-$modelo=$_REQUEST["mod"];
-$estado=$_REQUEST["est"];
+$matricula=$_REQUEST["matricula"];
+$capacidad=$_REQUEST["capacidad"];
+$modelo=$_REQUEST["modelo"];
+
 $con = mysqli_connect("localhost","root","","boletos"); 
 $table = "bus"; 
-$sql = "insert into $table (chofer, placa, matricula, capacidad, modelo, estado) values ('$chofer','$placa','$matricula','$capacidad','$modelo','$estado')";
+$sql = "insert into $table (chofer, placa, matricula, capacidad, modelo) values ('$chofer','$placa','$matricula','$capacidad','$modelo')";
 $resultado = $con->query($sql);
 
 if($resultado > 0) {
@@ -42,7 +42,6 @@ if($resultado > 0) {
 				<td>Matrícula</td>
 				<td>Capacidad</td>
 				<td>Modelo</td>
-				<td>Estado</td>
 			</tr>				  
 		</thead>
 		<tbody>
@@ -51,7 +50,6 @@ if($resultado > 0) {
 			<td><?php echo $matricula ?></td>
 			<td><?php echo $capacidad ?></td>
 			<td><?php echo $modelo ?></td>
-			<td><?php echo $estado ?></td>
 		</tbody>
 	</table>
 	<div class="mensaje">Datos ingresados correctamente</div>

@@ -1,70 +1,51 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscar.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Ingreso Buses</h1></center>
+	
+</body>
+</html>
+<body>
+	<div class="opciones">
+        <a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
+        <a href="buscar.php"><input type="button" value= "BUSCAR"></a>
+        <a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+    <!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Ingresar Bus</h1>
+    <form class="form-editar" action='procesar bus.php' method='post'>
+        <div>
+            <label for="">Chofer</label>
+            <input type='text' name=chofer>
+        </div>
+        <div>
+            <label for="">Placa</label>
+            <input type='text' name=placa>
+        </div>
+        <div>
+            <label for="">Matrícula</label>
+            <input type='text' name=matricula>
+        </div>
+        <div>
+            <label for="">Capacidad</label>
+            <input type='text' name=capacidad>
+        </div>
+        <div>
+            <label for="">Modelo</label>
+            <input type='text' name=modelo>
+        </div>
+        <section>
+            <input type='reset' value=Limpiar>
+            <input type='submit'>
+        </section>
+    </form>
 
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
-
-<?php
-echo"<form action='procesar bus.php' method='post'> ";
-
-echo"<center><table border=1 bgcolor='white' align='center'></center>
-
-<tr><td>
-Chofer: </td><td><input type='text' name=chofer><br></td></tr>
-<tr><td>
-Placa: </td><td><input type='text' name=placa><br></td></tr>
-<tr><td>
-Matricula: </td><td><input type='text' name=mat><br></td></tr>
-<tr><td>
-Capacidad: </td><td><input type='text' name=cap><br></td></tr>
-<tr><td>
-Modelo: </td><td><input type='text' name=mod><br></td></tr>
-<tr><td>
-Estado: </td><td><input type='text' name=est><br></td></tr>
-
-<tr>
-<td colspan=2><center>
-<input type='reset' value=Limpiar>
-
-<input type='submit'><center></td></tr>
-
-
-
-</table>";
-
-
-echo"</form>";
-?>
-
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br>
-
-<footer>
-</footer>
 </body>
 
 </html>

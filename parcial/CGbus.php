@@ -38,8 +38,7 @@ if($filas === 0){
 				<td>Placa</td>
 				<td>Matrícula</td>
 				<td>Capacidad</td>
-				<td>Modelo</td> 
-				<td>Estado</td> 
+				<td>Modelo</td>  
 				<td>Eliminar</td> 
 				<td>Editar</td> 
 			</tr>				  
@@ -54,7 +53,6 @@ if($filas === 0){
 			$matricula=$fila["matricula"];
 			$capacidad=$fila["capacidad"];
 			$modelo=$fila["modelo"];
-			$estado=$fila["estado"];
 		?>
     		<tr>
 				<td><?php echo $id_bus ?></td>
@@ -63,7 +61,6 @@ if($filas === 0){
 				<td><?php echo $matricula ?></td>
 				<td><?php echo $capacidad ?></td>
 				<td><?php echo $modelo ?></td>
-				<td><?php echo $estado ?></td>
 				<td>
 					<a href='eliminarbus.php?id_bus=<?php echo $id_bus ?>'>
 						<img src='imagenes/eliminar.png' width=35>

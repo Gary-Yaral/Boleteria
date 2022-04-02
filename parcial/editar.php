@@ -38,7 +38,7 @@ $placa=$filas["placa"];
 $matricula=$filas["matricula"];
 $capacidad=$filas["capacidad"];
 $modelo=$filas["modelo"];
-$estado=$filas["estado"];
+
 ?>
 	<form class="form-editar" action='MBus.php' method='post'>
 
@@ -63,13 +63,9 @@ $estado=$filas["estado"];
 			<label for="cedula">Modelo:</label>
 			<input type='text' name="modelo" value='<?php echo $modelo ?>'>
 		</div>
-		<div>
-			<label for="cedula">Estado:</label>
-			<input type='text' name="estado" value='<?php echo $estado ?>'>
-		</div>
 		<section>
-			<input type='reset' value=Limpiar>
-			<input type='submit'>
+			<a class="btn-cancelar" href ="CGbus.php">Cancelar</a>
+			<input type='submit' class="btn-editar">
 		</section>
 
 	</form>

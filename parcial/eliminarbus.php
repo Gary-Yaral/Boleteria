@@ -22,7 +22,7 @@
 
 
 <?php 
-$placa=$_REQUEST["placa"];
+@$placa=$_REQUEST["placa"];
 // por primera vez presionado=0 
 @$Presionado=$_REQUEST["Presionado"];
 ?>
@@ -40,7 +40,7 @@ if (strlen(@$Presionado)==0){
     <strong>¿Desea eliminar este bus?</strong>
 </aside>
   <div>
-    <a href=CGbus.php Title=Cancelar>Cancelar</a>
+    <a class="btn-cancelar" href=CGbus.php Title=Cancelar>Cancelar</a>
     <input type=submit value='Eliminar' name=Submit alt='Eliminar'>
   </div>
 <?php

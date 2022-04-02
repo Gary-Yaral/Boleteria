@@ -54,6 +54,7 @@
 				$telefono=$fila["telefono"];
 				$direccion=$fila["direccion"];
 				$correo=$fila["correo"];
+				$id_cliente=$fila["id_cliente"];
 
 			?>
 				<tr>
@@ -64,12 +65,12 @@
 					<td><?php echo $direccion ?></td>
 					<td><?php echo $correo ?></td>
 					<td>
-						<a href='eliminarcliente.php?cedula=$cedula'>
+						<a href='eliminarcliente.php?id_cliente=<?php echo $id_cliente ?>'>
 							<img src='imagenes/eliminar.png' width=35>
 						</a>
 					</td>
 					<td>
-						<a href='editar cliente.php?cedula=$cedula'>
+						<a href='editar cliente.php?id_cliente=<?php echo $id_cliente ?>'>
 							<img src='imagenes/editar.png' width=25>
 						</a>
 					</td>
