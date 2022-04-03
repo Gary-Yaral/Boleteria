@@ -57,7 +57,8 @@ if (strlen(@$Presionado)==2){
 <?php
 } else {
 ?>
-    <div>No se ha podido eliminar cliente</div>
+    <section class="error-cont">No se ha podido eliminar cliente</section>
+    <section class="error-cont">Hay boletos generados</section>
 <?php
   } 
 }

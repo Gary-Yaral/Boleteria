@@ -17,7 +17,7 @@
         <a href="buscar oficina.php"><input type="button" value= "BUSCAR"></a>
         <a href="CGoficina.php"><input type="button" value= "REGISTROS"></a>
 	</div>
-    <!-- Titulo de busqueda -->
+    <!-- Titulo de busqueda --> 
 	<h1 class="titulo-resultados" >Nueva Oficina</h1>
     <form class="form-editar" action='procesar oficina.php' method='post'>
         <div>

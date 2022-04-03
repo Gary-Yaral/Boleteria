@@ -18,7 +18,7 @@
         <a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
 	</div>
     <!-- Titulo de busqueda -->
-	<h1 class="titulo-resultados" >Ingresar Bus</h1>
+	<h1 class="titulo-resultados" >Nuevo Bus</h1>
     <form class="form-editar" action='procesar bus.php' method='post'>
         <div>
             <label for="">Chofer</label>

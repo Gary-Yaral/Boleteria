@@ -18,11 +18,11 @@
         <a href="CGboleto.php"><input type="button" value= "REGISTROS"></a>
 	</div>
 	<!-- Titulo de busqueda -->
-	<h1 class="titulo-resultados" >Generar boleto</h1>
+	<h1 class="titulo-resultados" >Nuevo Boleto</h1>
     <div class="form-buscar" id='formulario'>
         <label for="">Destinos</label>
         <select name="horario" id="horario">
-            <option value="empty">Seleccione el destino</option>
+            <option value="empty">Seleccione la ruta</option>
 <?php
 
 
@@ -51,17 +51,19 @@ $j = 0;
 while ($fila = $resultado->fetch_assoc()){ 
     $r_ids[$j][0] = $fila["id_ruta"];
     $r_ids[$j][1] = $fila["id_horario"];
+    $r_ids[$j][2] = $fila["hora_salida"];
     $j++; 
 }
 
 while ($fila1 = $resultado1->fetch_assoc()){ 
     $existe = false;   
     $ruta1=$fila1["id_ruta"]; 
+    $origen = $fila1["origen"]; 
     $destino = $fila1["destino"]; 
     for($m = 0; $m < count($r_ids); $m++) {
         if($ruta1 == $r_ids[$m][0]){
 ?>
-     <option value="<?php echo $r_ids[$m][1] ?>"><?php echo $destino ?></option>
+     <option value="<?php echo $r_ids[$m][1] ?>"><?php echo $origen.'-'.$destino.' - '.$r_ids[$m][2] ?></option>
 <?php
         }
     }

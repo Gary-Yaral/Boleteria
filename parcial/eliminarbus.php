@@ -57,7 +57,8 @@ if (strlen(@$Presionado)==2){
 <?php
 } else {
 ?>
-    <div>No se ha podido eliminar bus</div>
+    <section class="error-cont">No se ha podido eliminar bus</section>
+    <section class="error-cont">Hay horarios generados con ese bus</section>
 <?php
   } 
 }

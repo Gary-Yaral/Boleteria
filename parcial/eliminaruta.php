@@ -58,7 +58,8 @@ if (strlen(@$Presionado)==2){
 <?php
   } else {
   ?>
-      <div>No se ha podido eliminar oficina</div>
+      <section class="error-cont">No se ha podido eliminar ruta</section>
+      <section class="error-cont">Hay horarios generados con esa ruta</section>
   <?php
     } 
 }

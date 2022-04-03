@@ -21,7 +21,7 @@
             <option value="">Selecione un horario</option>
 <?php
 $con = mysqli_connect("localhost","root","","boletos");
-$table = "horario"; 
+$table = "ruta"; 
 $sql = "select * from $table";
 $resultado = $con->query($sql);
 $filas = mysqli_num_rows($resultado);
@@ -33,8 +33,8 @@ if($filas === 0){
 	<?php
 	} else {	 
 		while ($fila = $resultado->fetch_assoc()){
-            $id_horario = $fila['id_ruta'];
-            $ruta = $fila['origen'];
+            $id_ruta = $fila['id_ruta'];
+            $origen = $fila['origen'];
             $destino = $fila['destino'];
     ?>
             <option value="<?php echo $id_ruta ?>"><?php echo $origen.'-'.$destino ?></option>

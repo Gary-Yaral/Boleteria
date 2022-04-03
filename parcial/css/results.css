@@ -2,7 +2,7 @@ body {
     align-items: center;
     display: flex;
     width: 95%;
-    height: 100%;
+    min-height: 100%;
     flex-direction: column;
     font-family: Arial;
 }
@@ -10,7 +10,7 @@ body {
 .tabla-resultados{
     border-collapse: collapse;
     box-shadow: 1px 1px 3px 1px rgb(238, 238, 238);
-    box-sizing: border-box;
+    margin-bottom: 2rem;;
 }
 
 .tabla-resultados thead {
@@ -286,3 +286,10 @@ th, td {
     color: black;
 }
 
+
+.error-cont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 78, 47);
+}

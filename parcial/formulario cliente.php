@@ -18,7 +18,7 @@
         <a href="CGcliente.php"><input type="button" value= "REGISTROS"></a>
 	</div>
     <!-- Titulo de busqueda -->
-	<h1 class="titulo-resultados" >Ingresar cliente</h1>
+	<h1 class="titulo-resultados" >Nuevo Cliente</h1>
     <form class="form-editar" action='procesar cliente.php' method='post'>
         <div>
             <label for="">Cédula:</label>

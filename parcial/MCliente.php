@@ -13,38 +13,38 @@
 </html>
 <body>
 	<div class="opciones">
-    <a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
-    <a href="buscar.php"><input type="button" value= "BUSCAR"></a>
-    <a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
+    <a href="formulario cliente.php"><input type="button" value= "INGRESAR"></a>
+    <a href="buscar cliente.php"><input type="button" value= "BUSCAR"></a>
+    <a href="CGcliente.php"><input type="button" value= "REGISTROS"></a>
 	</div>
 	<!-- Titulo de busqueda -->
 	<h1 class="titulo-resultados" >¡Atención!</h1>
 
 
 <?php 
-@$id_bus=$_REQUEST["id_bus"];
-@$chofer=$_REQUEST["chofer"];
-@$placa=$_REQUEST["placa"];
-@$matricula=$_REQUEST["matricula"];
-@$capacidad=$_REQUEST["capacidad"];
-@$modelo=$_REQUEST["modelo"];
-
-$data = array(@$chofer, @$placa, @$matricula, @$capacidad, @$modelo);
+$id_cliente = $_REQUEST["id_cliente"];
+$cedula=$_REQUEST["cedula"];
+$nombres=$_REQUEST["nombres"];
+$apellidos=$_REQUEST["apellidos"];
+$telefono=$_REQUEST["telefono"];
+$direccion=$_REQUEST["direccion"];
+$correo=$_REQUEST["correo"];
 
 ?>
 
-<form class="form-buscar" name='formulario' method='post' action='EBus.php'>
+<form class="form-buscar" name='formulario' method='post' action='ECliente.php'>
     <aside class="titulo-modal">
-        <strong>¿Desea editar este bus?</strong>
+        <strong>¿Desea editar este cliente?</strong>
     </aside>
-    <input type='hidden' name="id_bus" value='<?php echo $id_bus ?>'>
-    <input type='hidden' name="chofer" value='<?php echo $chofer ?>'>
-    <input type='hidden' name="placa" value='<?php echo $placa ?>'>
-    <input type='hidden' name="matricula" value='<?php echo $matricula ?>'>
-    <input type='hidden' name="capacidad" value='<?php echo $capacidad ?>'>
-    <input type='hidden' name="modelo" value='<?php echo $modelo ?>'>
+    <input type='hidden' name="id_cliente" value='<?php echo $id_cliente ?>'>
+    <input type='hidden' name="cedula" value='<?php echo $cedula ?>'>
+    <input type='hidden' name="nombres" value='<?php echo $nombres ?>'>
+    <input type='hidden' name="apellidos" value='<?php echo $apellidos ?>'>
+    <input type='hidden' name="telefono" value='<?php echo $telefono ?>'>
+    <input type='hidden' name="direccion" value='<?php echo $direccion ?>'>
+    <input type='hidden' name="correo" value='<?php echo $correo ?>'>
     <div>
-        <a href=CGbus.php Title=Cancelar>Cancelar</a>
+        <a class="edit-cancelar" href=CGcliente.php Title=Cancelar>Cancelar</a>
         <input type=submit value='Aceptar' name=Submit alt='Aceptar'>
     </div>
 </form>

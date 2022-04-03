@@ -18,7 +18,7 @@
         <a href="CGruta.php"><input type="button" value= "REGISTROS"></a>
 	</div>
     <!-- Titulo de busqueda -->
-	<h1 class="titulo-resultados" >Nueva Oficina</h1>
+	<h1 class="titulo-resultados" >Nueva Ruta</h1>
     <form class="form-editar" action='procesar ruta.php' method='post'>
         <div>
             <label for="">N° Ruta</label>
@@ -34,7 +34,7 @@
         </div>
         <div>
             <label for="">Valor</label>
-            <input type='number' name=valor>
+            <input step="any" type='number' name=valor>
         </div>
         <section>
             <input type='reset' value=Limpiar>
