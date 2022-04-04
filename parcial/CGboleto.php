@@ -36,6 +36,7 @@ if($filas === 0){
 				<tr>	
 					<td>ID boleto</td>
 					<td>Fecha</td>
+					<td>Ruta</td>
 					<td>N° boleto</td>
 					<td>Ced. Cliente</td>
 					<td>Valor</td>
@@ -56,14 +57,37 @@ if($filas === 0){
 				$cliente[$fila["id_cliente"]] = $fila['cedula'];
 			}
 
+			$table1 = "ruta"; 
+			$sql1 = "select * from $table1";
+			$resultado1 = $con->query($sql1);
+			$rutas = array();
+
+			while ($fila1 = $resultado1->fetch_assoc()){
+				$rutas[$fila1["id_ruta"]] = $fila1['origen'].' - '.$fila1['destino'];
+			}
+
+			$table2 = "horario"; 
+			$sql2 = "select * from $table2";
+			$resultado2 = $con->query($sql2);
+			$horario = array();
+			while ($fila2 = $resultado2->fetch_assoc()){
+				$id_ruta = $fila2['id_ruta'];
+				$horario[$fila2["id_horario"]] = $rutas[$id_ruta];
+
+			}
+
 			while ($fila = $resultado->fetch_assoc()){ 
        
 				$num_boleto=$fila["num_boleto"];  
 				$fecha=$fila["fecha"];
 				$valor=$fila["valor"];
 				$n_asiento=$fila["n_asiento"];
+				$id_horario=$fila["id_horario"];
 				$id_boleto=$fila["id_boleto"];
 				$id_cliente=$fila["id_cliente"];
+
+
+
 
 				
 
@@ -71,6 +95,7 @@ if($filas === 0){
 			<tr>
 				<td><?php echo $id_boleto ?></td>  
 				<td><?php echo $fecha ?></td>
+				<td><?php echo $horario[$id_horario] ?></td>
 				<td><?php echo $num_boleto ?></td>
 				<td><?php echo $cliente[$id_cliente] ?></td>
 				<td><?php echo $valor ?></td>

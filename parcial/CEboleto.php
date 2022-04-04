@@ -1,76 +1,105 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>buses</title>
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/results.css">
+	<title>Document</title>
 </head>
-
 <body>
-<a href="formulario boleto.php"><input type="button" value= "INGRESAR"></a>
-<a href="buscarboleto.php"><input type="button" value= "BUSCAR"></a>
-<a href="CGboleto.php"><input type="button" value= "REGISTROS"></a>
-<center>
-<header>
-</header>	
-</center>
-<nav>
-<section id="menu">
-<br><br><br>
-<center><font face="helvetica"><h1>Resultados:</h1></center>
-
-
-
-</center>	
-
-</article>
-<br><br><br>
-<br>
+	
+</body>
+</html>
 <body>
+	<div class="opciones">
+		<a href="formulario boleto.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscarboleto.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGboleto.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Resultado:</h1>
 
 <?php
-$num_boleto=$_REQUEST["num_boleto"];
+$id_horario=$_REQUEST["id_horario"];
+$n_boleto=$_REQUEST["n_boleto"];
+$fecha=$_REQUEST["fecha"];
+
 //conectar a la bd
 $con = mysqli_connect("localhost","root","","boletos"); 
 $table = "boleto"; 
-$sql = "select * from $table where num_boleto='$num_boleto'";
+$sql = "select * from $table where id_horario='$id_horario' and num_boleto='$n_boleto' and fecha='$fecha'";
 $resultado = $con->query($sql);
 $filas = mysqli_num_rows($resultado);
 
-if($filas==0){
-  echo"<center>No existen datos</center>";
-} else {
-
-echo "<center><table border=2 bgcolor='white' align='center'></center>";
-echo"<tr>";
-   
-      echo"<td bgcolor='#E38DED'><font color='black'>Fecha</td>";
-	     echo"<td bgcolor='#E38DED'>Valor</td>";
-			  echo"<td bgcolor='#E38DED'>Numero de asiento</td>";
-			      echo"<td bgcolor='#E38DED'>Estado</td>";
-				  
-echo"</tr>";
- while ($fila = $resultado->fetch_assoc()){
-    echo"<tr>";
-	   	$fecha=$fila["fecha"];
-		$valor=$fila["valor"];
-		$n_asiento=$fila["n_asiento"];
-		$estado=$fila["estado"];	 
-		echo"<td>$fecha</td>";
-		echo"<td>$valor</td>";
-		echo"<td><center>$n_asiento</center></td>";
-		echo"<td>$estado</td>";
-	   
-	echo"</tr>";
-}
-echo "</table>";
-}
-
-
-
-
+if($filas === 0){
+	?>
+				<h3 class="No-resultado">No existen datos</h3>
+	<?php
+} else {	
 ?>
+	<table class="tabla-resultados">
+		<thead>
+			<tr>	
+				<td>ID boleto</td>
+				<td>Fecha</td>
+				<td>Ruta</td>
+				<td>N° boleto</td>
+				<td>Ced. Cliente</td>
+				<td>Valor</td>
+				<td>N° Asiento</td>
+			</tr>				  
+		</thead>
+		<tbody>
+	<?php
 
+		$table = "cliente"; 
+		$sql = "select * from $table";
+		$resultado1 = $con->query($sql);
+		$cliente = array();
+		while ($fila = $resultado1->fetch_assoc()){
+			$cliente[$fila["id_cliente"]] = $fila['cedula'];
+		}
 
+		while ($filas = $resultado->fetch_assoc()){ 
+	
+			$num_boleto=$filas["num_boleto"];  
+			$fecha=$filas["fecha"];
+			$valor=$filas["valor"];
+			$n_asiento=$filas["n_asiento"];
+			$id_boleto=$filas["id_boleto"];
+			$id_cliente=$filas["id_cliente"];
+
+			$table = "horario"; 
+			$sql = "select * from $table where id_horario='$id_horario'";
+			$resultado3 = $con->query($sql);
+			$resultado3 = $resultado3->fetch_assoc();
+
+			$id_ruta = $resultado3['id_ruta'];
+			$table2 = "ruta"; 
+			$sql2 = "select * from $table2 where id_ruta='$id_ruta'";
+			$resultado4 = $con->query($sql2);
+			$resultado4 = $resultado4->fetch_assoc();
+
+			$origen = $resultado4['origen'];
+			$destino = $resultado4['destino'];
+
+		?>
+		<tr>
+			<td><?php echo $id_boleto ?></td>  
+			<td><?php echo $fecha ?></td>
+			<td><?php echo $origen.' - '.$destino ?></td>
+			<td><?php echo $num_boleto ?></td>
+			<td><?php echo $cliente[$id_cliente] ?></td>
+			<td><?php echo '$'.$valor ?></td>
+			<td><?php echo $n_asiento ?></td>  
+		</tr>
+<?php } ?>
+	</tbody>
+</table>
+<?php 
+}
+?>
 
 </body>
 

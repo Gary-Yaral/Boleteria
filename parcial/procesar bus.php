@@ -37,7 +37,7 @@ if($filas > 0) {
 ?>
 	<div class="mensaje-error">No es posible agregar este bus</div>
 	<div class="mensaje-error">Ya existe un bus con esa placa</div>
-	<meta http-equiv='refresh' content='3;URL=URL=CGbus.php?'/>
+	<meta http-equiv='refresh' content='3;URL=CGbus.php?'/>
 <?php
 }else {
 $sql = "insert into $table (chofer, placa, matricula, capacidad, modelo) values ('$chofer','$placa','$matricula','$capacidad','$modelo')";

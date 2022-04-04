@@ -21,7 +21,8 @@
 	$nombreusuario = "";
 
 	if($filas > 0){
-		$nombreusuario = $usuario;
+		$resultado = $resultado->fetch_assoc();
+		$nombreusuario = $resultado['nombre'];
 	}
 
 ?>

@@ -18,18 +18,44 @@
 
     <form class="form-buscar" action='CEboleto.php' method='post'>
         <label for="cedula">Selecione la fecha:</label>
-        <input type="date" name="fecha">
-        <select name="horario" id="">
-            <option value="">Seleccione horario</option>
-            <option value="">10:00</option>
-            <option value="">14:00</option>
-        </select>
-        <select name="ruta" id="">
-            <option value="">Seleccione ruta</option>
-            <option value="">Babahoy-vinces</option>
+        <input type="date" name="fecha" required>
+        <select name="id_horario" id="" required>
+            <option value="">Seleccione un horario</option>
+        <?php
+
+$con = mysqli_connect("localhost","root","","boletos"); 
+$table = "horario"; 
+$sql = "select * from $table";
+$resultado = $con->query($sql);
+$table1 = "ruta"; 
+$sql1 = "select * from $table1";
+$resultado1 = $con->query($sql1);
+
+$data = array();
+
+while ($fila = $resultado1->fetch_assoc()){  
+    $id_rut = $fila["id_ruta"];  
+    $data[$id_rut]  =  $fila["origen"].' - '.$fila['destino']; 
+
+} 
+
+while ($fila1 = $resultado->fetch_assoc()){ 
+    $id_horario=$fila1["id_horario"]; 
+    $id_ruta= $fila1["id_ruta"]; 
+ 
+    $salida = $fila1["hora_salida"]; 
+    
+?>
+     <option value="<?php echo  $id_horario ?>"><?php echo $data[$id_ruta].' - '.$salida ?></option>
+<?php
+        
+    
+}
+
+ ?>
         </select>
         <label for="n_boleto">Ingrese número:</label>
-        <input type="text" name="n_boleto" id="n_boleto" placeholder="N° Boleto">
+        <input type="number" name="n_boleto" id="n_boleto" placeholder="N° Boleto" required>
         <div>
             <input type='submit' value="Buscar">
             <input type='reset' value=Limpiar>
