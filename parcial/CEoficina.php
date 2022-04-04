@@ -38,7 +38,6 @@
 	<table class="tabla-resultados">
 		<thead>
 			<tr>	
-				<td>ID Oficina</td>
 				<td>Nombre</td>
 				<td>Direción</td>
 				<td>Teléfono</td>
@@ -56,7 +55,6 @@
 				$direccion=$fila["direccion"];
 				$correo=$fila["correo"];		   	 	 
 			?>
-			<td><?php echo $id_oficina ?></td>
 			<td><?php echo $nombre ?></td>
 			<td><?php echo $telefono ?></td>
 			<td><?php echo $direccion ?></td>

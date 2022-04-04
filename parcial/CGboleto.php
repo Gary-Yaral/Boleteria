@@ -37,7 +37,7 @@ if($filas === 0){
 					<td>ID boleto</td>
 					<td>Fecha</td>
 					<td>N° boleto</td>
-					<td>ID Cliente</td>
+					<td>Ced. Cliente</td>
 					<td>Valor</td>
 					<td>N° Asiento</td>
 					<td>Eliminar</td> 
@@ -47,6 +47,15 @@ if($filas === 0){
 			<tbody>
 			
 			<?php  
+
+			$table = "cliente"; 
+			$sql = "select * from $table";
+			$resultado1 = $con->query($sql);
+			$cliente = array();
+			while ($fila = $resultado1->fetch_assoc()){
+				$cliente[$fila["id_cliente"]] = $fila['cedula'];
+			}
+
 			while ($fila = $resultado->fetch_assoc()){ 
        
 				$num_boleto=$fila["num_boleto"];  
@@ -55,12 +64,15 @@ if($filas === 0){
 				$n_asiento=$fila["n_asiento"];
 				$id_boleto=$fila["id_boleto"];
 				$id_cliente=$fila["id_cliente"];
+
+				
+
 			?>
 			<tr>
 				<td><?php echo $id_boleto ?></td>  
 				<td><?php echo $fecha ?></td>
 				<td><?php echo $num_boleto ?></td>
-				<td><?php echo $id_cliente ?></td>
+				<td><?php echo $cliente[$id_cliente] ?></td>
 				<td><?php echo $valor ?></td>
 				<td><?php echo $n_asiento ?></td>  
 				<td>
@@ -69,7 +81,7 @@ if($filas === 0){
 					</a>
 				</td>
 				<td>
-					<a href='editarboleto.php?id_boleto=<?php echo $id_boleto ?>'>
+					<a href='editar boleto.php?id_boleto=<?php echo $id_boleto ?>&id_cliente=<?php echo $id_cliente ?>'>
 						<img src='imagenes/editar.png' width=25>
 					</a>
 				</td>

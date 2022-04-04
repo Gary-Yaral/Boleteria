@@ -22,23 +22,23 @@
     <form class="form-editar" action='procesar bus.php' method='post'>
         <div>
             <label for="">Chofer</label>
-            <input type='text' name=chofer>
+            <input type='text' name=chofer required>
         </div>
         <div>
             <label for="">Placa</label>
-            <input type='text' name=placa>
+            <input type='text' name=placa required>
         </div>
         <div>
             <label for="">Matrícula</label>
-            <input type='text' name=matricula>
+            <input type='text' name=matricula required>
         </div>
         <div>
             <label for="">Capacidad</label>
-            <input type='text' name=capacidad>
+            <input type='number' name=capacidad required>
         </div>
         <div>
             <label for="">Modelo</label>
-            <input type='text' name=modelo>
+            <input type='text' name=modelo required>
         </div>
         <section>
             <input type='reset' value=Limpiar>

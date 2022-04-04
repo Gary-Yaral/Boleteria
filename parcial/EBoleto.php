@@ -13,36 +13,45 @@
 </html>
 <body>
 	<div class="opciones">
-    <a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
-    <a href="buscar.php"><input type="button" value= "BUSCAR"></a>
-    <a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
+    <a href="formulario boleto.php"><input type="button" value= "INGRESAR"></a>
+    <a href="buscar boleto.php"><input type="button" value= "BUSCAR"></a>
+    <a href="CGboleto.php"><input type="button" value= "REGISTROS"></a>
 	</div>
 	<!-- Titulo de busqueda -->
 	<h1 class="titulo-resultados" >¡Atención!</h1>
 
 
 <?php 
-$id_bus=$_REQUEST["id_bus"];
-$chofer=$_REQUEST["chofer"];
-$placa=$_REQUEST["placa"];
-$matricula=$_REQUEST["matricula"];
-$capacidad=$_REQUEST["capacidad"];
-$modelo=$_REQUEST["modelo"];
-$con = mysqli_connect("localhost","root","","boletos"); 
-$table = "bus"; 
+$id_boleto=$_REQUEST["id_boleto"];
+$id_cliente = $_REQUEST['id_cliente'];
+$id_cliente_sel = $_REQUEST['id_cliente_sel'];
 
-$sql = "UPDATE $table SET chofer ='$chofer', placa ='$placa', matricula = '$matricula', capacidad='$capacidad', modelo ='$modelo' WHERE id_bus='$id_bus'";
-$resultado = $con->query($sql);
-if($resultado == 1) {
-?>  
+
+
+if($id_cliente == $id_cliente_sel) {
+	?>  
     <h3 class="titulo-eliminar">Resultado</h3>
-    <section class="mensaje-eliminar">Bus editado</section>
-    <meta http-equiv='refresh' content='1;URL=CGbus.php?'/>
+    <section class="mensaje-eliminar">Cliente de boleto fue editado</section>
+    <meta http-equiv='refresh' content='3;URL=CGboleto.php?'/>
 <?php
 } else {
-?>
-    <div>No se ha podido editar bus</div>
-<?php
+
+	$con = mysqli_connect("localhost","root","","boletos"); 
+	$table = "boleto"; 
+
+	$sql = "UPDATE $table SET id_cliente ='$id_cliente' WHERE id_boleto='$id_boleto'";
+	$resultado = $con->query($sql);
+	if($resultado == 1) {
+	?>  
+		<h3 class="titulo-eliminar">Resultado</h3>
+		<section class="mensaje-eliminar">Cliente de boleto fue editado</section>
+		<meta http-equiv='refresh' content='3;URL=CGboleto.php?'/>
+	<?php
+	} else {
+	?>
+		<div>No se ha podido editar bus</div>
+	<?php
+	}
 }
 ?>
 

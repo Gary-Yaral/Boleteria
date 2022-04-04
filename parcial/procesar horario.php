@@ -21,15 +21,30 @@
 	<h1 class="titulo-resultados" >Resultado:</h1>
 
 <?php
+
 $id_ruta=$_REQUEST["id_ruta"];
 $id_bus=$_REQUEST["id_bus"];
 $hora_salida=$_REQUEST["hora_salida"];
-$hora_llegada=$_REQUEST["hora_llegada"];
 
 
 $con = mysqli_connect("localhost","root","","boletos"); 
 $table = "horario"; 
-$sql = "INSERT INTO $table (id_ruta, id_bus, hora_llegada, hora_salida) VALUES ('$id_ruta','$id_bus','$hora_llegada','$hora_salida')";
+
+$sql = "select * from $table where id_bus='$id_bus' and id_ruta = '$id_ruta' and hora_salida = '$hora_salida'";
+$resultado = $con->query($sql);
+$filas = mysqli_num_rows($resultado);
+
+// Horario existe
+if($filas > 0) {
+?>
+	<div class="mensaje-error">No es posible agregar este horario</div>
+	<div class="mensaje-error">Ya existe otro horario con esa ruta y bus</div>
+	<meta http-equiv='refresh' content='1;URL=CGcliente.php?'/>
+<?php
+
+} else {
+// horario no existe
+$sql = "INSERT INTO $table (id_ruta, id_bus, hora_salida) VALUES ('$id_ruta','$id_bus','$hora_salida')";
 $resultado = $con->query($sql);
 
 if($resultado > 0) {
@@ -39,7 +54,6 @@ if($resultado > 0) {
 			<tr>	
 				<td>ID_Ruta</td>
 				<td>ID_Bus</td>
-				<td>Hora Llegada</td>
 				<td>Hora Salida</td>
 		
 			</tr>				  
@@ -47,7 +61,6 @@ if($resultado > 0) {
 		<tbody>
 			<td><?php echo $id_ruta ?></td>
 			<td><?php echo $id_bus ?></td>
-			<td><?php echo $hora_llegada ?></td>
 			<td><?php echo $hora_salida ?></td>
 		</tbody>
 	</table>
@@ -56,7 +69,9 @@ if($resultado > 0) {
 <?php 
 } else {
 ?>
-	<div class="mensaje-error">No se ha podido ingresar los datos <br> 
+	<div class="mensaje-error">No es posible agregar este horario</div>
+	<div class="mensaje-error">Ya existe otro cliente registrado con esa cédula</div>
+	<meta http-equiv='refresh' content='3;URL=CGhoraro.php?'/>
 <?php	
 	if($id_ruta === "" || $id_bus ===""){
 		echo "No ha seleccionado la ruta o el bus";
@@ -64,6 +79,7 @@ if($resultado > 0) {
 ?>
 </div>
 <?php
+	}
 }
 ?>
 </body>

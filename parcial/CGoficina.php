@@ -35,7 +35,6 @@ if($filas === 0){
 		<table class="tabla-resultados">
 			<thead>
 				<tr>	
-					<td>ID Oficina</td>
 					<td>Nombre</td>
 					<td>Direción</td>
 					<td>Teléfono</td>
@@ -56,7 +55,6 @@ if($filas === 0){
 				
 			?>
 			<tr>
-				<td><?php echo $id_oficina ?></td>
 				<td><?php echo $nombre ?></td>
 				<td><?php echo $direccion ?></td>
 				<td><?php echo $telefono ?></td>

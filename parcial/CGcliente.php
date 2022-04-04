@@ -38,7 +38,7 @@
 					<td>Nombres</td>
 					<td>Apellidos</td>
 					<td>Teléfono</td>
-					<td>Drección</td> 
+					<td>Dirección</td> 
 					<td>Correo</td> 
 					<td>Eliminar</td> 
 					<td>Editar</td> 

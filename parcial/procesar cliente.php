@@ -30,10 +30,26 @@ $correo=$_REQUEST["correo"];
 
 $con = mysqli_connect("localhost","root","","boletos"); 
 $table = "cliente"; 
-$sql = "insert into $table (cedula, nombres, apellidos, telefono, direccion, correo) values ('$cedula','$nombres','$apellidos','$telefono','$direccion','$correo')";
-$resultado = $con->query($sql);
 
-if($resultado > 0) {
+
+$sql = "select * from $table where cedula='$cedula'";
+$resultado = $con->query($sql);
+$filas = mysqli_num_rows($resultado);
+
+if($filas > 0) {
+?>
+	<div class="mensaje-error">No es posible agregar este cliente</div>
+	<div class="mensaje-error">Ya existe otro cliente registrado con esa cédula</div>
+	<meta http-equiv='refresh' content='3;URL=CGcliente.php?'/>
+<?php
+
+} else {
+
+
+	$sql = "insert into $table (cedula, nombres, apellidos, telefono, direccion, correo) values ('$cedula','$nombres','$apellidos','$telefono','$direccion','$correo')";
+	$resultado = $con->query($sql);
+
+	if($resultado > 0) {
 ?>
 	<table class="tabla-resultados">
 		<thead>
@@ -58,10 +74,11 @@ if($resultado > 0) {
 	<div class="mensaje">Datos ingresados correctamente</div>
 	<meta http-equiv='refresh' content='1;URL=CGcliente.php?'/>
 <?php 
-} else {
+	} else {
 ?>
 	<div class="mensaje-error">No se ha podido ingresar los datos</div>
 <?php
+	}
 }
 ?>
 </body>

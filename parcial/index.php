@@ -17,6 +17,7 @@
 </head>
 <body>
     <div class="login-container">
+      <img class="fondo" src="imagenes/fondo.jpg" alt="imagen">
       <div class="form-container">
         <img class="bus" src="imagenes/bus.png" alt="bus.png">
         <h2 class="title-index">Boletería Caluma</h2>

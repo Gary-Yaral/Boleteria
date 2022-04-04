@@ -22,19 +22,23 @@
     <form class="form-editar" action='procesar ruta.php' method='post'>
         <div>
             <label for="">N° Ruta</label>
-            <input type='number' name=n_ruta>
+            <input type='number' name=n_ruta required>
         </div>
         <div>
             <label for="">Origen</label>
-            <input type='text' name=origen>
+            <input type='text' name=origen required>
         </div>
         <div>
             <label for="">Destino</label>
-            <input type='text' name=destino>
+            <input type='text' name=destino required>
         </div>
         <div>
             <label for="">Valor</label>
-            <input step="any" type='number' name=valor>
+            <input step="any" type='number' name=valor required>
+        </div>
+        <div>
+            <label for="">Tiempo Espera</label>
+            <input type='time' name=tiempo_espera required>
         </div>
         <section>
             <input type='reset' value=Limpiar>

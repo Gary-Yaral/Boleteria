@@ -14,6 +14,7 @@ if(isset($_POST)) {
     $valor = $_POST['valor'];
     $asiento = $_POST['asiento'];
     $horario = $_POST['id_horario'];
+    $direccion = $_POST['direccion'];
     $cedula = "";
    /*  echo json_encode($_POST);
     return; */
@@ -36,7 +37,7 @@ if(isset($_POST)) {
     $agregado = false;
 
     if($cliente_existe < 1) {
-        $sql1 = "INSERT INTO cliente(cedula, nombres, apellidos, telefono, direccion, correo) VALUES('$cedula','$nombres','$apellidos','$telefono',' ','$email')";
+        $sql1 = "INSERT INTO cliente(cedula, nombres, apellidos, telefono, direccion, correo) VALUES('$cedula','$nombres','$apellidos','$telefono','$direccion','$email')";
         $agregado = $con->query($sql1);
         $table = "cliente"; 
         $sql = "SELECT * FROM $table WHERE cedula ='$cedula'";

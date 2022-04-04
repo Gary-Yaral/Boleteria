@@ -110,8 +110,10 @@ while ($fila1 = $resultado1->fetch_assoc()){
             <input type="text" name="nombres" id="nombres" value="">
             <span class="boleto-text" for="telefono">Teléfono: </span>
             <input type="text" name="telefono" id="telefono" value="">
+            <span class="boleto-text" for="direccion">Dirección: </span>
+            <input type="text" name="direccion" id="direccion" value="">
             <span class="boleto-text" for="email">Email: </span>
-            <input type="text" name="email" id="email" value="">
+            <input type="email" name="email" id="email" value="">
         </section>
         <input type="submit" value="Generar">
     </form>
@@ -123,7 +125,14 @@ while ($fila1 = $resultado1->fetch_assoc()){
     const form = document.querySelector('.form-boleto');
     const horario = document.querySelector('#horario');
     let mensaje = document.querySelector('#mensaje');
+
     let cedula = document.querySelector('#cedula');
+    let apellidos = document.querySelector('#apellidos');
+    let nombres = document.querySelector('#nombres');
+    let telefono = document.querySelector('#telefono');
+    let correo = document.querySelector('#email');
+    let direccion = document.querySelector('#direccion');
+
     let asiento = document.querySelector('#asiento');
     let bus = document.querySelector('#bus');
     let destino = document.querySelector('#destino');
@@ -180,8 +189,20 @@ while ($fila1 = $resultado1->fetch_assoc()){
         clienteSelecionado = clienteSelecionado.value;
         if(clienteSelecionado !=="1") {
             cliente.classList.remove('hidden')
+            cedula.required = true;
+            nombres.required = true;
+            apellidos.required = true;
+            telefono.required = true;
+            direccion.required = true;
+            correo.required = true;
         } else {
             cliente.classList.add('hidden')
+            cedula.required = false;
+            nombres.required = false;
+            apellidos.required = false;
+            telefono.required = false;
+            direccion.required = false;
+            correo.required = false;
         }
     })
 

@@ -22,27 +22,27 @@
     <form class="form-editar" action='procesar cliente.php' method='post'>
         <div>
             <label for="">Cédula:</label>
-            <input type='text' name=cedula>
+            <input type='text' name=cedula required>
         </div>
         <div>
             <label for="">Nombres:</label>
-            <input type='text' name=nombres>
+            <input type='text' name=nombres required>
         </div>
         <div>
             <label for="">Apellidos.</label>
-            <input type='text' name=apellidos>
+            <input type='text' name=apellidos required>
         </div>
         <div>
             <label for="">Telefono:</label>
-            <input type='text' name=telefono>
+            <input type='text' name=telefono required>
         </div>
         <div>
             <label for="">Dirección:</label>
-            <input type='text' name=direccion>
+            <input type='text' name=direccion required>
         </div>
         <div>
             <label for="">Correo</label>
-            <input type='text' name=correo>
+            <input type='email' name=correo required>
         </div>
         <section>
             <input type='reset' value=Limpiar>

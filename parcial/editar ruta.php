@@ -36,27 +36,33 @@ $n_ruta=$filas["n_ruta"];
 $origen=$filas["origen"];
 $destino=$filas["destino"];
 $valor=$filas["valor"];
+$tiempo_espera=$filas["tiempo_espera"];
 
 
 ?>
 	<form class="form-editar" action='MRuta.php' method='post'>
 
 		<input type='hidden' name="id_ruta" value='<?php echo $id_ruta ?>'>
+		<input type='hidden' name="n_ruta_antigua" value='<?php echo $n_ruta ?>'>
 		<div>
 			<label for="cedula">Nº Ruta:</label>
-			<input type='number' name="n_ruta" value='<?php echo $n_ruta ?>'>
+			<input type='number' name="n_ruta" value='<?php echo $n_ruta ?>' required>
 		</div>
 		<div>
 			<label for="cedula">Origen:</label>
-			<input type='text' name="origen" value='<?php echo $origen ?>'>
+			<input type='text' name="origen" value='<?php echo $origen ?>' required>
 		</div>
 		<div>
 			<label for="cedula">Destino:</label>
-			<input type='text' name="destino" value='<?php echo $destino ?>'>
+			<input type='text' name="destino" value='<?php echo $destino ?>' required>
 		</div>
 		<div>
 			<label for="cedula">Valor:</label>
-			<input step="any" type='number' name="valor" value='<?php echo $valor ?>'>
+			<input step="any" type='number' name="valor" value='<?php echo $valor ?>' required>
+		</div>
+		<div>
+			<label for="cedula">Tiempo Espera:</label>
+			<input type='time' name="tiempo_espera" value='<?php echo $tiempo_espera ?>' required>
 		</div>
 		<section>
 			<a class="btn-cancelar" href ="CGbus.php">Cancelar</a>

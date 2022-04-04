@@ -31,17 +31,17 @@ $filas = mysqli_num_rows($resultado);
 
 if($filas === 0){
 	?>
-		<h3 class="No-resultado">No existen datos</h3>";
+		<h3 class="No-resultado">No existen datos</h3>
 	<?php
 	} else {	
 	?>
 		<table class="tabla-resultados">
 			<thead>
 				<tr>	
-					<td>ID Ruta</td>
 					<td>N° Ruta</td>
 					<td>Origen</td>
 					<td>Destino</td>
+					<td>Tiempo Espera</td>
 					<td>Valor</td>
 					<td>Eliminar</td> 
 					<td>Editar</td> 
@@ -51,19 +51,20 @@ if($filas === 0){
 			
 			<?php  
 			while ($fila = $resultado->fetch_assoc()){ 
-		
 				$id_ruta=$fila["id_ruta"];
 				$n_ruta=$fila["n_ruta"];
 				$origen=$fila["origen"];
 				$destino=$fila["destino"];
+				$tiempo_espera=explode(':',$fila["tiempo_espera"]);
 				$valor=$fila["valor"];
 			?>
 				<tr>
-					<td><?php echo $id_ruta ?></td>
+					
 					<td><?php echo $n_ruta ?></td>
 					<td><?php echo $origen ?></td>
 					<td><?php echo $destino ?></td>
-					<td><?php echo $valor ?></td>
+					<td><?php echo $tiempo_espera[0].' horas - ' .$tiempo_espera[1].' min' ?></td>
+					<td><?php echo '$'.$valor ?></td>
 					<td>
 						<a href='eliminaruta.php?id_ruta=<?php echo $id_ruta ?>'>
 							<img src='imagenes/eliminar.png' width=35>

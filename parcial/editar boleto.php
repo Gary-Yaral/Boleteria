@@ -7,67 +7,63 @@
 	<link rel="stylesheet" href="css/results.css">
 	<title>Document</title>
 </head>
-<body>
-	
-</body>
-</html>
-<body>
-	<div class="opciones">
-		<a href="formulario bus.php"><input type="button" value= "INGRESAR"></a>
-		<a href="buscar.php"><input type="button" value= "BUSCAR"></a>
-		<a href="CGbus.php"><input type="button" value= "REGISTROS"></a>
-	</div>
-	<!-- Titulo de busqueda -->
-	<h1 class="titulo-resultados" >Editar Bus</h1>
-
 <?php 
-$id_bus=$_REQUEST["id_bus"];
-// por primera vez presionado=0 
-
-//conectar a la bd
-
+$id_boleto=$_REQUEST["id_boleto"];
+$id_cliente_sel = $_REQUEST['id_cliente'];
 $con = mysqli_connect("localhost","root","","boletos"); 
-$table = "bus"; 
-$sql = "select * from $table where id_bus='$id_bus'";
+$table = "boleto"; 
+$sql = "select * from $table where id_boleto = '$id_boleto'";
 $resultado = $con->query($sql);
-$filas =$resultado->fetch_assoc();
-
-$id_bus=$filas["id_bus"];
-$chofer=$filas["chofer"];
-$placa=$filas["placa"];
-$matricula=$filas["matricula"];
-$capacidad=$filas["capacidad"];
-$modelo=$filas["modelo"];
+$fila = $resultado->fetch_assoc();
+$num_boleto = $fila['num_boleto']
 
 ?>
-	<form class="form-editar" action='MBus.php' method='post'>
-
-		<input type='hidden' name="id_bus" value='<?php echo $id_bus ?>'>
-		<div>
-			<label for="cedula">Chofer:</label>
-			<input type='text' name="chofer" value='<?php echo $chofer ?>'>
-		</div>
-		<div>
-			<label for="cedula">Placa:</label>
-			<input type='text' name="placa" value='<?php echo $placa ?>'>
-		</div>
-		<div>
-			<label for="cedula">Matrìcula:</label>
-			<input type='text' name="matricula" value='<?php echo $matricula ?>'>
-		</div>
-		<div>
-			<label for="cedula">Capacidad:</label>
-			<input type='text' name="capacidad" value='<?php echo $capacidad ?>'>
-		</div>
-		<div>
-			<label for="cedula">Modelo:</label>
-			<input type='text' name="modelo" value='<?php echo $modelo ?>'>
-		</div>
+<body>
+	<div class="opciones">
+		<a href="formulario boleto.php"><input type="button" value= "INGRESAR"></a>
+		<a href="buscar boleto.php"><input type="button" value= "BUSCAR"></a>
+		<a href="CGboleto.php"><input type="button" value= "REGISTROS"></a>
+	</div>
+	<!-- Titulo de busqueda -->
+	<h1 class="titulo-resultados" >Editar (Boleto - Cliente)</h1>
+	<form class="form-buscar" action='MBoleto.php' method='post'>
 		<section>
-			<a class="btn-cancelar" href ="CGbus.php">Cancelar</a>
-			<input type='submit' class="btn-editar">
-		</section>
+            <span class="boleto-text">ID Boleto: <?php echo $id_boleto ?></span><br>
+            <span class="boleto-text">Nº boleto: <?php echo $num_boleto ?></span>
+            <input type="hidden" name="id_cliente_sel" id="id_cliente_sel" value ="<?php echo $id_cliente_sel ?>">
+            <input type="hidden" name="id_boleto" id="id_boleto" value ="<?php echo $id_boleto ?>">
+			<select name="id_cliente" id="id_cliente">
+				<option value="">Seleccionar cliente</option>
 
+<?php 
+
+
+$table = "cliente"; 
+$sql = "select * from $table";
+$resultado = $con->query($sql);
+
+while ($fila = $resultado->fetch_assoc()){ 
+       
+	$id_cliente=$fila["id_cliente"]; 
+	$cedula=$fila["cedula"];
+	$nombres=$fila["nombres"];
+	$apellidos=$fila["apellidos"];
+?>	
+	<option value="<?php echo $id_cliente ?>"><?php echo $cedula.': '.$nombres.' ',$apellidos?></option>
+<?php
+}
+?>
+			</select>
+		</section>
+		<section>
+            <a class="cancelar-boleto" href="CGboleto.php">Cancelar</a>
+            <input type='submit' value="Registrar">
+        </section>
 	</form>
+	<script>
+		const id_cliente = document.querySelector('#id_cliente');
+		const id_cliente_sel = document.querySelector('#id_cliente_sel');
+		id_cliente.value = id_cliente_sel.value
+	</script>
 </body>
 </html>

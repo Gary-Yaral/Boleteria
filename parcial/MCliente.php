@@ -24,6 +24,7 @@
 <?php 
 $id_cliente = $_REQUEST["id_cliente"];
 $cedula=$_REQUEST["cedula"];
+$cedula_antigua=$_REQUEST["cedula_antigua"];
 $nombres=$_REQUEST["nombres"];
 $apellidos=$_REQUEST["apellidos"];
 $telefono=$_REQUEST["telefono"];
@@ -38,6 +39,7 @@ $correo=$_REQUEST["correo"];
     </aside>
     <input type='hidden' name="id_cliente" value='<?php echo $id_cliente ?>'>
     <input type='hidden' name="cedula" value='<?php echo $cedula ?>'>
+    <input type='hidden' name="cedula_antigua" value='<?php echo $cedula_antigua ?>'>
     <input type='hidden' name="nombres" value='<?php echo $nombres ?>'>
     <input type='hidden' name="apellidos" value='<?php echo $apellidos ?>'>
     <input type='hidden' name="telefono" value='<?php echo $telefono ?>'>

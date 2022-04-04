@@ -33,6 +33,7 @@ $resultado = $con->query($sql);
 $filas =$resultado->fetch_assoc();
 
 $cedula=$filas["cedula"];
+$cedula_antigua=$filas["cedula"];
 $nombres=$filas["nombres"];
 $apellidos=$filas["apellidos"];
 $telefono=$filas["telefono"];
@@ -43,29 +44,30 @@ $correo=$filas["correo"];
 	<form class="form-editar" action='MCliente.php' method='post'>
 
 		<input type='hidden' name="id_cliente" value='<?php echo $id_cliente ?>'>
+		<input type='hidden' name="cedula_antigua" value='<?php echo $cedula_antigua ?>'>
 		<div>
 			<label for="cedula">Cédula:</label>
-			<input type='text' name="cedula" value='<?php echo $cedula ?>'>
+			<input type='text' name="cedula" value='<?php echo $cedula ?>' required>
 		</div>
 		<div>
 			<label for="cedula">Nombres:</label>
-			<input type='text' name="nombres" value='<?php echo $nombres ?>'>
+			<input type='text' name="nombres" value='<?php echo $nombres ?>' required>
 		</div>
 		<div>
 			<label for="cedula">Apellidos:</label>
-			<input type='text' name="apellidos" value='<?php echo $apellidos ?>'>
+			<input type='text' name="apellidos" value='<?php echo $apellidos ?>' required>
 		</div>
 		<div>
 			<label for="cedula">Teléfono:</label>
-			<input type='text' name="telefono" value='<?php echo $telefono ?>'>
+			<input type='text' name="telefono" value='<?php echo $telefono ?>' required>
 		</div>
 		<div>
 			<label for="cedula">Dirección:</label>
-			<input type='text' name="direccion" value='<?php echo $direccion ?>'>
+			<input type='text' name="direccion" value='<?php echo $direccion ?>' required>
 		</div>
 		<div>
 			<label for="cedula">Correo:</label>
-			<input type='text' name="correo" value='<?php echo $correo ?>'>
+			<input type='email' name="correo" value='<?php echo $correo ?>' required>
 		</div>
 		<section>
 			<a class="btn-cancelar" href ="CGcliente.php">Cancelar</a>

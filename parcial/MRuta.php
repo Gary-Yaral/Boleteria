@@ -25,9 +25,11 @@
 
 $id_ruta= $_REQUEST["id_ruta"];
 $n_ruta= $_REQUEST["n_ruta"];
+$n_ruta_antigua= $_REQUEST["n_ruta_antigua"];
 $origen= $_REQUEST["origen"];
 $destino= $_REQUEST["destino"];
 $valor= $_REQUEST["valor"];
+$tiempo_espera= $_REQUEST["tiempo_espera"];
 
 
 ?>
@@ -36,11 +38,13 @@ $valor= $_REQUEST["valor"];
     <aside class="titulo-modal">
         <strong>¿Desea editar esta ruta?</strong>
     </aside>
+    <input type='hidden' name="n_ruta_antigua" value='<?php echo $n_ruta_antigua ?>'>
     <input type='hidden' name="id_ruta" value='<?php echo $id_ruta ?>'>
     <input type='hidden' name="n_ruta" value='<?php echo $n_ruta ?>'>
     <input type='hidden' name="origen" value='<?php echo $origen?>'>
     <input type='hidden' name="destino" value='<?php echo $destino ?>'>
     <input type='hidden' name="valor" value='<?php echo $valor ?>'>
+    <input type='hidden' name="tiempo_espera" value='<?php echo $tiempo_espera ?>'>
     <div>
         <a class="edit-cancelar" href=CGRuta.php Title=Cancelar>Cancelar</a>
         <input type=submit value='Aceptar' name=Submit alt='Aceptar'>

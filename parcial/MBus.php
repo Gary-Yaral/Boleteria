@@ -25,6 +25,7 @@
 @$id_bus=$_REQUEST["id_bus"];
 @$chofer=$_REQUEST["chofer"];
 @$placa=$_REQUEST["placa"];
+@$placa_antigua=$_REQUEST["n_placa_antigua"];
 @$matricula=$_REQUEST["matricula"];
 @$capacidad=$_REQUEST["capacidad"];
 @$modelo=$_REQUEST["modelo"];
@@ -40,6 +41,7 @@ $data = array(@$chofer, @$placa, @$matricula, @$capacidad, @$modelo);
     <input type='hidden' name="id_bus" value='<?php echo $id_bus ?>'>
     <input type='hidden' name="chofer" value='<?php echo $chofer ?>'>
     <input type='hidden' name="placa" value='<?php echo $placa ?>'>
+    <input type='hidden' name="placa_antigua" value='<?php echo $placa_antigua ?>'>
     <input type='hidden' name="matricula" value='<?php echo $matricula ?>'>
     <input type='hidden' name="capacidad" value='<?php echo $capacidad ?>'>
     <input type='hidden' name="modelo" value='<?php echo $modelo ?>'>

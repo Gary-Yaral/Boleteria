@@ -47,7 +47,7 @@ while ($fila1 = $resultado1->fetch_assoc()){
 
 if($filas === 0){
 	?>
-		<h3 class="No-resultado">No existen datos</h3>";
+		<h3 class="No-resultado">No existen datos</h3>
 	<?php
 	} else {	
 	?>
@@ -57,7 +57,6 @@ if($filas === 0){
 					<td>ID Horario</td>
 					<td>Ruta</td>
 					<td>Nº Bus</td>
-					<td>Hora Llegada</td>
 					<td>Hora Salida</td>
 					<td>Eliminar</td> 
 					<td>Editar</td> 
@@ -68,8 +67,8 @@ if($filas === 0){
 			<?php  
 			while ($fila = $resultado->fetch_assoc()){ 
 				$id_horario=$fila["id_horario"];
-				$horallegada=$fila["hora_llegada"];
 				$horasalida=$fila["hora_salida"];
+				
 				$id_bus=$fila["id_bus"];
 				$id_ruta=$fila["id_ruta"];
 				$destino_ = $destinos[$id_ruta];
@@ -79,7 +78,6 @@ if($filas === 0){
 				<td><?php echo $id_horario ?></td>
 				<td><?php echo $destino_?></td>		
 				<td><?php echo $id_bus ?></td>		
-				<td><?php echo $horallegada ?></td>
 				<td><?php echo $horasalida ?></td>		
 				<td>
 					<a href='eliminar horario.php?id_horario=<?php echo $id_horario ?>'>
@@ -87,7 +85,7 @@ if($filas === 0){
 					</a>
 				</td>
 				<td>
-					<a href='editar horario.php?id_horario=<?php echo $id_horario ?>'>
+					<a href='editar horario.php?id_horario=<?php echo $id_horario ?>&id_ruta=<?php echo $id_ruta ?>'>
 						<img src='imagenes/editar.png' width=25>
 					</a>
 				</td>
